@@ -1,3 +1,4 @@
 node_modules/
 
+# this ignores config from github
 server/config.js
