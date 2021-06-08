@@ -3,11 +3,11 @@ const router = express.Router();
 const flightModel = require("../models.js/flightModels");
 
 router.get('/all', (req, res) => {
-    flightModel.find({}, function (err, flightSchema) {
+    flightModel.find({}, function (err, flightuser) {
         if (err) {
             res.send(err);
         } else {
-            res.send(flightSchema);
+            res.send(flightuser);
         }
     });
 });
