@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+app.use("/flights", require("./routes/flights"));
+
 app.listen(port, () => {
   console.log("Aerospot Backend");
   console.log("Server is running on " + port + "port");
