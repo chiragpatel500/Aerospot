@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const flightModel = require("../models.js/flightModels");
+const flightModel = require("../models/flightModels");
 
 router.get('/all', (req, res) => {
-    flightModel.find({}, function (err, flightuser) {
+    flightModel.find({}, function (err, flightsuser) {
         if (err) {
             res.send(err);
         } else {
-            res.send(flightuser);
+            res.send(flightsuser);
         }
     });
 });
-
-
 
 
 module.exports = router;
