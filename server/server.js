@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const mongoURI = require("./config.js").mongoURI;const app = express();
+const mongoURI = require("./config.js").mongoURI;
 const cors = require("cors");
 
 //initialize express app
 const app = express();
 const port = process.env.PORT || 5000;
 
-//connect to DB
+//connect to DataBase
 mongoose
     .connect(mongoURI, { useNewurlPraser: true, useCreateIndex: true })
     .then(() => console.log("Connection to Mongo DB established"))
