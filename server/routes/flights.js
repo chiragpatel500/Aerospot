@@ -22,5 +22,15 @@ router.get('/easyjet', (req, res) => {
     });
 });
 
+router.get('/Lufthansa', (req, res) => {
+    flightModel.find({ airline: "Lufthansa" }, function (err, flightsuser) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(flightsuser);
+        }
+    });
+});
+
 
 module.exports = router;
