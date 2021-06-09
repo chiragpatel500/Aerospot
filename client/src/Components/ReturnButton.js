@@ -10,6 +10,7 @@ import history from "../history";
 const useStyles = makeStyles({
     root: {
         backgroundColor: "skyblue",
+        color:"black",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
