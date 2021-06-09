@@ -28,10 +28,10 @@ export default function SimpleBottomNavigation() {
     // Return to view the previous page
     return (
         <BottomNavigation
-            value={value}
-            onClick={(event, newValue) => {
-                history.goBack();
-            }}
+            // value={value}
+            // onClick={(event, newValue) => {
+            //     history.goBack();
+            // }}
             showLabels
             className={classes.root}
         >
