@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+export default function Login() {
     const classes = useStyles();
 
     return (
@@ -57,7 +57,7 @@ export default function SignIn() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Login
         </Typography>
                 <form className={classes.form} noValidate>
                     <TextField

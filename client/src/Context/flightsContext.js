@@ -15,8 +15,8 @@ export const flightsContextProvider = ({ children }) => {
     const [flights, setFlights] = useState(initFlightsContext.flights);
     console.log(flights);
     return (
-        <CocktailsContext.Provider value={{ flights, setFlights }}>
+        <FlightsContext.Provider value={{ flights, setFlights }}>
             {children}
-        </CocktailsContext.Provider>
+        </FlightsContext.Provider>
     )
 };

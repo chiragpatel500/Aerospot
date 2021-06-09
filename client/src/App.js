@@ -5,6 +5,10 @@ import ListScreen from "./components/ListScreen";
 import Navbar from './components/Navbar';
 import ReturnButton from './components/ReturnButton';
 import Home from './components/Home';
+import Details from './components/Details';
+import Login from './components/Login';
+import Register from './components/Register';
+import MyProfile from './components/MyProfile';
 
 function App() {
   return (
@@ -15,10 +19,13 @@ function App() {
       
         <ListScreen />
   
-      <login />
+      <Details />
+
+      <Login />
 
       <Register />
       
+      <MyProfile />
       <ReturnButton />
     </div>
   );

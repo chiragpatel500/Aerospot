@@ -5,10 +5,10 @@ const Profile = () => {
    
     return (
         <div>
-            <img src={user.picture} alt="Profile Picture" />
+            <img src="" alt="Profile Picture" />
 
-            <h2>Name:{user.name}My name</h2>
-            <p>Email:{user.email}My email</p>
+            <h2>Name:</h2>
+            <p>Email:</p>
             
         </div>
     );

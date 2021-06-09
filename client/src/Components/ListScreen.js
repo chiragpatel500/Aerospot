@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-        maxWidth: "fitcontent",
+    maxWidth: "fitcontent",
   },
 });
 
@@ -26,37 +26,33 @@ function ListScreen() {
   }, []);
   return (
     <div>
-      <h1>flights to and from</h1>
+      <h1>Flightlist</h1>
       {flights.length &&
         flights.map((flight) => (
           <div key={flight._id}>
             <Card className={classes.root}>
               <CardActionArea>
-                
-                  <CardMedia
-                    component="img"
-                    alt="lufthansa image"
-                    height="140"
-                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlWP_2EyIBbfJrbIikpmUNp_SzvVswy8AXqQ&usqp=CAU"
-                    title="airplane image"
-                  />
-                <CardContent >
+                <CardMedia
+                  component="img"
+                  alt="lufthansa image"
+                  height="140"
+                  image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlWP_2EyIBbfJrbIikpmUNp_SzvVswy8AXqQ&usqp=CAU"
+                  title="airplane image"
+                />
+                <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {flight.airline}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {flight.type}
-                  </Typography>
                 </CardContent>
               </CardActionArea>
-                    <CardActions style={{ backgroundColor: "skyblue", color: "black", justifyContent: "center", width: "fitcontent" }}>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
+              <CardActions
+                style={{
+                  backgroundColor: "skyblue",
+                  color: "black",
+                  justifyContent: "center",
+                  width: "fitcontent",
+                }}
+              >
                 <Button size="small" color="primary">
                   Learn More
                 </Button>

@@ -32,5 +32,16 @@ router.get('/Lufthansa', (req, res) => {
     });
 });
 
+// router.get('/:id', (req, res) => {
+//     let userId = req.params.id;
+//     userModel.finDById(userId, function (err, user) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             console.log(user);
+//         }
+//     });
+// });
+
 
 module.exports = router;
