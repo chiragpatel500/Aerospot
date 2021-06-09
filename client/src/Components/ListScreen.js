@@ -40,8 +40,7 @@ function ListScreen() {
                     image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlWP_2EyIBbfJrbIikpmUNp_SzvVswy8AXqQ&usqp=CAU"
                     title="airplane image"
                   />
-             
-                <CardContent>
+                <CardContent >
                   <Typography gutterBottom variant="h5" component="h2">
                     {flight.airline}
                   </Typography>
