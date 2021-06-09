@@ -26,6 +26,7 @@ function App() {
       <Register />
       
       <MyProfile />
+      
       <ReturnButton />
     </div>
   );

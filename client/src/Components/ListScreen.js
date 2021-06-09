@@ -36,7 +36,7 @@ function ListScreen() {
                   component="img"
                   alt="lufthansa image"
                   height="140"
-                  image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlWP_2EyIBbfJrbIikpmUNp_SzvVswy8AXqQ&usqp=CAU"
+                  image= {flight.image}
                   title="airplane image"
                 />
                 <CardContent>
