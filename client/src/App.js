@@ -15,7 +15,10 @@ function App() {
       
         <ListScreen />
   
+      <login />
 
+      <Register />
+      
       <ReturnButton />
     </div>
   );
