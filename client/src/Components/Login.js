@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
+import Register from './Register';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -94,7 +95,7 @@ export default function Login() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Register
           </Button>
                     <Grid container>
                         <Grid item xs>
@@ -103,8 +104,8 @@ export default function Login() {
               </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                            <Link to="/Register" variant="body2">
+                                {"Don't have an account? Regsiter Now"}
                             </Link>
                         </Grid>
                     </Grid>
