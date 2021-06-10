@@ -37,14 +37,14 @@ router.get("/:id", (req, res) => {
   let flightsId = req.params.id;
   console.log(flightsId);
   flightDetailsModel
-    .find({flightid: flightsId })
+    .findOne({flightid: flightsId })
     .then((flightdetails) => {
       console.log(flightdetails);
-      res.send("success");
+      res.send(flightdetails);
     })
     .catch((error) => {
       console.log(error);
-      res.send("error");
+      res.send(error);
     });
 });
 
@@ -58,6 +58,8 @@ router.get("/detail/all", (req, res) => {
     }
   });
 });
+
+
 
 
 module.exports = router;

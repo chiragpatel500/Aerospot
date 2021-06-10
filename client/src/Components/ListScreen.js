@@ -30,34 +30,34 @@ function ListScreen() {
   return (
     <div>
       <h1>Flightlist</h1>
-      {flights.length &&
+      {flights.length != 0 &&
         flights.map((flight) => (
-           <Link to={`/Details/${flights.flightId}`}>
-          <div key={flight._id}>
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="lufthansa image"
-                  height="140"
-                  image={flight.image}
-                  title="airplane image"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {flight.airline}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions
-                style={{
-                  backgroundColor: "skyblue",
-                  color: "black",
-                  justifyContent: "center",
-                  width: "fitcontent",
-                }}
-              ></CardActions>
-            </Card>
+          <Link to={`/Details/${flight._id}`} key={flight._id}>
+            <div>
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="lufthansa image"
+                    height="140"
+                    image={flight.image}
+                    title="airplane image"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {flight.airline}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions
+                  style={{
+                    backgroundColor: "skyblue",
+                    color: "black",
+                    justifyContent: "center",
+                    width: "fitcontent",
+                  }}
+                ></CardActions>
+              </Card>
             </div>
           </Link>
         ))}
@@ -67,10 +67,8 @@ function ListScreen() {
 
 export default ListScreen;
 
-
-
- {
-   /* <Button size="small" color="primary">
+{
+  /* <Button size="small" color="primary">
                  <Link to="/Details">Learn More</Link> 
                 </Button> */
- }
+}
