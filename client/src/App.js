@@ -12,23 +12,34 @@ import MyProfile from './components/MyProfile';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <FlightsContextProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+            <Home />
+            </Route>
+            <Route exact path="/ListScreen ">
+            <ListScreen />
+            </Route>
+            <Route exact path="/Details">
+            <Details />
+              <Route exact path="/Login">
+            <Login />
+              </Route>
+              <Route exact path="/Register">
+            <Register />
+              </Route>
+              <Route exact path="/MyProfile">
+                <MyProfile />
+              </Route>
+            </Switch>
+            <ReturnButton />
+          </div>
+        </Router>
+      </FlightsContextProvider>
 
-      <Home />
-      
-        <ListScreen />
-  
-      <Details />
-
-      <Login />
-
-      <Register />
-      
-      <MyProfile />
-      
-      <ReturnButton />
-    </div>
   );
 }
 
