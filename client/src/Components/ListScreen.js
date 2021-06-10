@@ -26,11 +26,13 @@ function ListScreen() {
       .then((res) => res.json())
       .then((data) => setflights(data));
   }, []);
+
   return (
     <div>
       <h1>Flightlist</h1>
       {flights.length &&
         flights.map((flight) => (
+           <Link to={`/Details/${flights.flightId}`}>
           <div key={flight._id}>
             <Card className={classes.root}>
               <CardActionArea>
@@ -54,10 +56,10 @@ function ListScreen() {
                   justifyContent: "center",
                   width: "fitcontent",
                 }}
-              >
-              </CardActions>
+              ></CardActions>
             </Card>
-          </div>
+            </div>
+          </Link>
         ))}
     </div>
   );

@@ -7,9 +7,5 @@ const flightSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-//   flightdetail: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: "flightdetails",
-//   },
 });
 module.exports = mongoose.model('flightsusers', flightSchema);
