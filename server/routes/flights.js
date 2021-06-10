@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const flightModel = require("../models/flightModels");
+const flightsuserModel = require("../models/flightModels")
 
 router.get('/all', (req, res) => {
     flightModel.find({}, function (err, flightsuser) {
@@ -32,16 +33,16 @@ router.get('/Lufthansa', (req, res) => {
     });
 });
 
-// router.get('/:id', (req, res) => {
-//     let userId = req.params.id;
-//     userModel.finDById(userId, function (err, user) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log(user);
-//         }
-//     });
-// });
+router.get('/:id', (req, res) => {
+    let flightsUserId = req.params.id;
+    flightsuserModel.finDById(flightsUserId, function (err, flightsuser) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(flightsuser);
+      }
+    });
+});
 
 
 module.exports = router;

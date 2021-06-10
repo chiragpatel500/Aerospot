@@ -1,23 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
-
+import Navbar from "./Navbar";
 
 function Home() {
   return (
-    <div style={{backgroundColor:"skyblue",marginBottom:"5%"}}>
+    <div style={{ backgroundColor: "skyblue", marginBottom: "5%" }}>
       <div>
         <h1>Welcome to AeroSpot</h1>
         <h3>Perfect Place for Aero Spotters</h3>
         <h5>
-          View and Post pictures to and from the app and share it with your fellow Aero
-          Spotters
+          View and Post pictures to and from the app and share it with your
+          fellow Aero Spotters
         </h5>
       </div>
+      
       <div>
-        <button>
+        <Link to="/ListScreen">
           <FlightTakeoffIcon />
-        </button>
+        </Link>
       </div>
 
       <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -38,7 +38,7 @@ function ListScreen() {
                   component="img"
                   alt="lufthansa image"
                   height="140"
-                  image= {flight.image}
+                  image={flight.image}
                   title="airplane image"
                 />
                 <CardContent>
@@ -55,9 +55,6 @@ function ListScreen() {
                   width: "fitcontent",
                 }}
               >
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
               </CardActions>
             </Card>
           </div>
@@ -67,3 +64,11 @@ function ListScreen() {
 }
 
 export default ListScreen;
+
+
+
+ {
+   /* <Button size="small" color="primary">
+                 <Link to="/Details">Learn More</Link> 
+                </Button> */
+ }

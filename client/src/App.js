@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/ListScreen ">
+            <Route exact path="/ListScreen">
               <ListScreen />
             </Route>
             <Route exact path="/Details">
