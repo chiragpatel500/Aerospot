@@ -1,11 +1,12 @@
 import React from 'react';
 
 
+
 const Profile = () => {
    
     return (
         <div>
-            <img src="" alt="Profile Picture" />
+            <img alt=""/>
 
             <h2>Name:</h2>
             <p>Email:</p>

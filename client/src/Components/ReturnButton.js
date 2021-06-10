@@ -5,19 +5,20 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import RestoreIcon from "@material-ui/icons/Restore";
 import history from "../history";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // Css
 const useStyles = makeStyles({
-    root: {
-        backgroundColor: "skyblue",
-        color:"black",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        position: "fixed",
-        width: "100%",
-        bottom: 0,
-    },
+  root: {
+    backgroundColor: "orange",
+    color: "black",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    position: "fixed",
+    width: "100%",
+    bottom: 0,
+  },
 });
 
 
@@ -29,10 +30,10 @@ export default function SimpleBottomNavigation() {
     // Return to view the previous page
     return (
         <BottomNavigation
-            // value={value}
-            // onClick={(event, newValue) => {
-            //     history.goBack();
-            // }}
+            value={value}
+            onClick={(event, newValue) => {
+                history.goBack();
+            }}
             showLabels
             className={classes.root}
         >
