@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 const flightDetailSchema = new mongoose.Schema({
-  imageId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "flightsusers",
-  },
   flightroute: {
     type: String,
   },
@@ -13,5 +9,9 @@ const flightDetailSchema = new mongoose.Schema({
   built: {
     type: Number,
   },
+  flightdetail: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "flightsusers",
+  },
 });
-module.exports = mongoose.model("flightdetails", flightDetailSchema);
+module.exports = mongoose.model("filghtdetail", flightDetailSchema);
