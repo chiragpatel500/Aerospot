@@ -31,7 +31,7 @@ function Details() {
   const classes = useStyles();
   let { flightId } = useParams();
   useEffect(() => {
-    fetch("http://localhost:5000/flights/flightId")
+    fetch("http://localhost:5000/flights/easyjet")
       .then((res) => res.json())
       .then((data) => setflights(data));
   }, []);
@@ -50,7 +50,7 @@ function Details() {
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
               Airline name    
-              {/* Airline:{flightId.airline} */}
+              Airline:{flightId.airline}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -58,7 +58,7 @@ function Details() {
                     component="p"
             >
               Flight type
-                    {/* Type:{flightId.type} */}
+                    Type:{flightId.type}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -66,7 +66,7 @@ function Details() {
                     component="p"
             >
               flight Route
-                    {/* Route:{flightId.flightroute} */}
+                    Route:{flightId.flightroute}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -74,7 +74,7 @@ function Details() {
                     component="p"
             >
               built year
-                    {/* Built:{flightId.built} */}
+                    Built:{flightId.built}
                   </Typography>
                 </CardContent>
               </CardActionArea>
