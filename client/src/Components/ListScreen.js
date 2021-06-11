@@ -15,6 +15,7 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 const useStyles = makeStyles({
   root: {
     maxWidth: "fitcontent",
+    backgroundColor:"skyblue",
   },
 });
 
@@ -62,7 +63,7 @@ function ListScreen() {
             </div>
           </Link>
         ))}
-      <div>
+      <div style={{marginBottom: "20%" }}>
         <Link to="/UpLoadForm">
           Add
           <LibraryAddIcon />
