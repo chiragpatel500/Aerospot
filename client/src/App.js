@@ -8,6 +8,7 @@ import Details from "./components/Details";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import MyProfile from "./components/MyProfile";
+import UpLoadForm from "./components/UploadForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FlightsContextProvider } from "./context/flightsContext";
 
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route exact path="/MyProfile">
               <MyProfile />
+            </Route>
+            <Route exact path="/UploadForm">
+              <UpLoadForm/>
             </Route>
           </Switch>
           <ReturnButton />
