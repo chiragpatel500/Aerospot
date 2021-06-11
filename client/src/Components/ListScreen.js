@@ -63,12 +63,14 @@ function ListScreen() {
           </Link>
         ))}
       <div>
-       <Link to="/UpLoadForm">Add<LibraryAddIcon/>Images </Link> 
+        <Link to="/UpLoadForm">
+          Add
+          <LibraryAddIcon />
+          Images
+        </Link>
       </div>
     </div>
   );
 }
 
 export default ListScreen;
-
-
