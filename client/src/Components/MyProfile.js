@@ -1,6 +1,6 @@
 import React from "react";
 
-const Profile = () => {
+const MyProfile = () => {
   return (
     <div>
       <h2>Name:</h2>
@@ -18,4 +18,4 @@ const Profile = () => {
     </div>
   );
 };
-export default Profile;
+export default MyProfile;

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 function Home() {
   return (
-    <div style={{ backgroundColor: "skyblue", marginBottom: "5%" }}>
+    <div style={{ backgroundColor: "skyblue"}}>
       <div>
         <h1>Welcome to AeroSpot</h1>
         <h3>Perfect Place for Aero Spotters</h3>
