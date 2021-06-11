@@ -20,11 +20,10 @@ import {
 } from "react-router-dom";
 import { FlightsContextProvider } from "../context/flightsContext";
 
-
 const useStyles = makeStyles({
   root: {
     maxWidth: "fitcontent",
-    backgroundColor:"skyblue",
+    backgroundColor: "skyblue",
   },
 });
 
@@ -86,7 +85,7 @@ function Details() {
               <CommentIcon /> Comment
             </Button>
             <Button size="small" color="primary">
-              <ShareIcon/> Share 
+              <ShareIcon /> Share
             </Button>
           </CardActions>
         </Card>
