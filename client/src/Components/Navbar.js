@@ -31,9 +31,9 @@ export default function ButtonAppBar() {
         style={{ backgroundColor: "orange", color: "black" }}
       >
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          {/* <Typography variant="h6" className={classes.title}>
             <Link to="/MyProfile">MyProfile</Link>
-          </Typography>
+          </Typography> */}
 
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
