@@ -31,9 +31,9 @@ export default function ButtonAppBar() {
         style={{ backgroundColor: "orange", color: "black" }}
       >
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-                    </IconButton>
+          {/* <Typography variant="h6" className={classes.title}>
+            <Link to="/MyProfile">MyProfile</Link>
+          </Typography> */}
 
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
