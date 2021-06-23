@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/flights", require("./routes/flights"));
+app.use("/users", require("./routes/users"));
 
 app.listen(port, () => {
   console.log("Aerospot Backend");
