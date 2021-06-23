@@ -9,10 +9,13 @@ const port = process.env.PORT || 5000;
 
 //connect to DataBase
 mongoose
-    .connect(mongoURI, { useNewurlPraser: true, useCreateIndex: true })
-    .then(() => console.log("Connection to Mongo DB established"))
-    .catch((err) => console.log(err));
-
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connection to Mongo DB established"))
+  .catch((err) => console.log(err));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
