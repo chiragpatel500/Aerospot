@@ -5,6 +5,7 @@ const userModel = require("../models/userModel");
 
 router.post("/register", (req, res) => {
     console.log(req.body);
+    const reqEmail =req.body.email
 })
 
 module.exports = router;
