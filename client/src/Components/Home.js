@@ -14,7 +14,7 @@ function Home() {
           fellow Aero Spotters
         </h5>
       </div>
-      
+      <h1> This app is currently under development</h1>
       <div>
         <Link to="/ListScreen">
           <FlightTakeoffIcon />
