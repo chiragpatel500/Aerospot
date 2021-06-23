@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-
 const UpLoadForm = () => {
   const [name, setName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const submitForm = () => {};
   return (
-    <div className="UpLoadForm" style={{ marginTop: "50%" }}>
+    <div className="UpLoadForm" style={{ marginTop: "30%" }}>
       <form>
         <input
           type="text"

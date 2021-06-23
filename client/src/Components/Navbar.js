@@ -29,19 +29,16 @@ export default function ButtonAppBar() {
       <AppBar
         position="static"
         style={{ backgroundColor: "orange", color: "black" }}
-      >
-        <Toolbar>
+      > <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link to="/MyProfile">MyProfile</Link>
           </Typography>
-
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
-          </Typography>
-
-          <Link to="/Login">
+        </Typography>
+          {/* <Link to="/Login">
             <Button color="inherit">Login</Button>
-          </Link>
+          </Link> */}
         </Toolbar>
       </AppBar>
     </div>

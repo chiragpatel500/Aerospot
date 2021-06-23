@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+import Button from "@material-ui/core/Button";
 import Navbar from "./Navbar";
 
 function Home() {
   return (
-    <div style={{ backgroundColor: "skyblue"}}>
+    <div style={{ backgroundColor: "skyblue" }}>
       <div>
         <h1>Welcome to AeroSpot</h1>
         <h3>Perfect Place for Aero Spotters</h3>
@@ -14,6 +15,18 @@ function Home() {
           fellow Aero Spotters
         </h5>
       </div>
+      <Link to="/Register">
+        <Button variant="contained" color="primary">
+          Register
+        </Button>
+      </Link>
+
+      or
+      <Link to="/Login">
+        <Button variant="contained" color="primary">
+          Login
+        </Button>
+      </Link>
       <h1> This app is currently under development</h1>
       <div>
         <Link to="/ListScreen">

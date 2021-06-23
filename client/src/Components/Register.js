@@ -15,18 +15,18 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {"Copyright © "}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{" "}
+//       {new Date().getFullYear()}
+//       {"."}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -65,7 +65,7 @@ export default function Register() {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="uname"
                 name="userName"
@@ -77,8 +77,7 @@ export default function Register() {
                 autoFocus
               />
             </Grid>
-         
-          
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -109,7 +108,7 @@ export default function Register() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/Login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
