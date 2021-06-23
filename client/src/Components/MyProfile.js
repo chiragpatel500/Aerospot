@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 const MyProfile = () => {
   return (
@@ -18,7 +18,6 @@ const MyProfile = () => {
   );
 };
 export default MyProfile;
-
 
 // import React from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -63,5 +62,3 @@ export default MyProfile;
 //     </div>
 //   );
 // }
-
-
