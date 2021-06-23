@@ -68,10 +68,10 @@ export default function Login() {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id="username"
+                        label="userName"
+                        name="username"
+                        autoComplete="uname"
                         autoFocus
                     />
                     <TextField

@@ -3,8 +3,8 @@ import React from "react";
 const MyProfile = () => {
   return (
     <div>
-      <h2>Name:</h2>
-      <p>Email:</p>
+      <h2>UserName:</h2>
+      
       <p>
         Liked images:
         <img alt="" />

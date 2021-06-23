@@ -5,16 +5,16 @@ const bcrypt = require("bcrypt");
 
 router.post("/Register", (req, res) => {
   console.log(req.body);
-  const reqEmail = req.body.email;
+  //   const reqEmail = req.body.email;
   const reqUsername = req.body.username;
   const reqPassword = req.body.password;
 
-  userModel.findOne({ email: reqEmail }, (err, user) => {
+  userModel.findOne({ username: reqUsername }, (err, user) => {
     if (err) {
       res.json({ error: err });
     }
     if (user) {
-      res.send("Email is already in use");
+      res.send("username is already in use");
     } else {
       bcrypt.genSalt(10, function (err, salt) {
         bcrypt.hash(reqPassword, salt, function (err, hash) {
@@ -22,7 +22,7 @@ router.post("/Register", (req, res) => {
           console.log(hash);
           const newUser = new userModel({
             username: reqUsername ? reqUsername : "",
-            email: reqEmail,
+            // email: reqEmail,
             password: hash,
           });
           newUser
@@ -39,27 +39,32 @@ router.post("/Register", (req, res) => {
   });
 });
 
-
 router.post("/Login", (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    userModel.findOne({ email: email }, (err, user) => {
-        if (err) {
-            res.send("Email does not exist");
-        } else {
-            bcrypt.compare(password, user.password, function (err, result) {
-                consol.log(result);
-                if (err) {
-                    res.send(err)
-                }
-                if (result) {
-                    
-                } else {
-                    res.send("password does not match");
-                }
-            });
-        }
-    })
+  console.log(`req.body`, req.body);
+  //   const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  userModel.findOne({ username: username }, (err, user) => {
+    if (err) {
+      res.send("username does not exist");
+    } else {
+      if (user === null) {
+        res.send("Cannot find user with this username");
+      } else {
+        console.log(`user`, user);
+        bcrypt.compare(password, user.password, function (err, result) {
+          console.log(result);
+          if (err) {
+            res.send(err);
+          }
+          if (result) {
+          } else {
+            res.send("password does not match");
+          }
+        });
+      }
+    }
+  });
 });
 
 module.exports = router;
