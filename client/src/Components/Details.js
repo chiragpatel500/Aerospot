@@ -19,6 +19,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { FlightsContextProvider } from "../context/flightsContext";
+import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
   root: {

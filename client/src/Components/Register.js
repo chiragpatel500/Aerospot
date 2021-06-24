@@ -13,8 +13,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-
-
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -34,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor:"skyblue",
-
+    backgroundColor: "skyblue",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -52,6 +49,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
   const classes = useStyles();
+  const axios = require("axios").default;
+  axios.post("/user", {
+      userName: "",
+      password: "",
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  axios.post("/user", {
+      userName: "",
+      password: "",
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   return (
     <Container component="main" maxWidth="xs">

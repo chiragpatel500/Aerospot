@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { FlightsContextProvider } from "../context/flightsContext";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
   root: {

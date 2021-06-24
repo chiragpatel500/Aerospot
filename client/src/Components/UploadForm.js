@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AuthContext } from "../context/authContext";
 
 const UpLoadForm = () => {
   const [name, setName] = useState("");
