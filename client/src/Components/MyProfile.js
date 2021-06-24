@@ -3,6 +3,7 @@ import React from "react";
 const MyProfile = () => {
   return (
     <div>
+      <img></img>
       <h2>userName:</h2>
       <p>
         Liked images:
