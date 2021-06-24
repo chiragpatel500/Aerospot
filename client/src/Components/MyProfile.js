@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const MyProfile = () => {
+  const [users, setUsers] = useState([]);
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  
   return (
     <div>
       <img></img>

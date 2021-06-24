@@ -48,7 +48,6 @@ router.get("/:id", (req, res) => {
     });
 });
 
-
 router.get("/detail/all", (req, res) => {
   flightDetailsModel.find({}, function (err, flightsuser) {
     if (err) {
@@ -58,8 +57,5 @@ router.get("/detail/all", (req, res) => {
     }
   });
 });
-
-
-
 
 module.exports = router;

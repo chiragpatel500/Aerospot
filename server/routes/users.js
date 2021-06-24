@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const secretOrKey = require("../config.js").secretOrKey;
+const jwt = require("jsonwebtoken");
+const passport = require("passport");
 
 router.post("/Register", (req, res) => {
   console.log(req.body);
@@ -58,6 +61,15 @@ router.post("/Login", (req, res) => {
             res.send(err);
           }
           if (result) {
+            const options = {
+              id: user._id,
+            };
+            const token = jwt.sign(options, secretOrKey, { expiresIn: "48hr" });
+            console.log(token);
+            res.json({
+              success: true,
+              token: token,
+            });
           } else {
             res.send("password does not match");
           }
@@ -66,5 +78,14 @@ router.post("/Login", (req, res) => {
     }
   });
 });
+
+router.get(
+  "/MyProfile",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    console.log(req.user);
+    res.send(req.user);
+  }
+);
 
 module.exports = router;

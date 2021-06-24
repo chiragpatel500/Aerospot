@@ -1,4 +1,4 @@
 node_modules/
 
 # this ignores config from github and doesnt push it
-server/config.js
+.env 
