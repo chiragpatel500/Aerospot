@@ -50,9 +50,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const axios = require("axios").default;
+  const axios = require("axios")
   axios
-    .post("/user", {
+    .post("http://localhost:5000/users/Login", {
       userName: "",
       password: "",
     })

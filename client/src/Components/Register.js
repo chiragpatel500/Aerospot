@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Register() {
   const classes = useStyles();
   const axios = require("axios").default;
-  axios.post("/user", {
+  axios
+    .post("http://localhost:5000/users/Register", {
       userName: "",
       password: "",
     })

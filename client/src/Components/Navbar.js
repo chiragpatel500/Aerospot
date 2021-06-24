@@ -36,9 +36,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
         </Typography>
-          {/* <Link to="/Login">
-            <Button color="inherit">Login</Button>
-          </Link> */}
+          isLoggedin : <Link to="/Login">
+            <Button color="inherit">Logout</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
