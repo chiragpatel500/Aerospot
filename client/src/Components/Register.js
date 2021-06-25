@@ -49,28 +49,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
   const classes = useStyles();
-  const axios = require("axios").default;
-  axios
-    .post("http://localhost:5000/users/Register", {
-      userName: "",
-      password: "",
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  axios.post("/user", {
-      userName: "",
-      password: "",
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const [flights, setflights] = useState([]);
+
+ useEffect(() => {
+   fetch("http://localhost:5000/users/Register")
+     {
+      method: 'post',
+      
+      }
+     .then((res) => res.json())
+     .then((data) => setflights(data));
+ }, []);
 
   return (
     <Container component="main" maxWidth="xs">

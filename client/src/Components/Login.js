@@ -50,18 +50,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const axios = require("axios")
-  axios
-    .post("http://localhost:5000/users/Login", {
-      userName: "",
-      password: "",
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const [flights, setflights] = useState([]);
+   useEffect(() => {
+     fetch("http://localhost:5000/users/Login")
+     {
+       method: 'post',
+      }
+       .then((res) => res.json())
+       .then((data) => setLogin(data));
+   }, []);
 
   return (
     <Container component="main" maxWidth="xs">
