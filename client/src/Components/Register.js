@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 // function Copyright() {
 //   return (
@@ -49,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Register() {
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -113,7 +115,7 @@ export default function Register() {
               />
             </Grid>
           </Grid>
-          <Button
+         <Link to="/ListScreen"><Button
             onClick={registerFetch}
             type="submit"
             fullWidth
@@ -122,7 +124,7 @@ export default function Register() {
             className={classes.submit}
           >
             Sign Up
-          </Button>
+          </Button></Link> 
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/Login" variant="body2">

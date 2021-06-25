@@ -69,6 +69,7 @@ router.post("/Login", (req, res) => {
             res.json({
               success: true,
               token: token,
+              user,
             });
           } else {
             res.send("password does not match");

@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 // function Copyright() {
 //     return (
@@ -50,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -112,7 +114,8 @@ export default function Login() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Button
+          <Link to="/ListScreen">
+            <Button
             onClick={loginFetch}
             type="submit"
             fullWidth
@@ -121,7 +124,7 @@ export default function Login() {
             className={classes.submit}
           >
             Log in
-          </Button>
+          </Button></Link>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -129,9 +132,9 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              {/* <Link to="/Register" variant="body2">
+              <Link to="/Register" variant="body2">
                 {"Don't have an account? Regsiter Now"}
-              </Link> */}
+              </Link>
             </Grid>
           </Grid>
         </form>
