@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -49,17 +50,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
   const classes = useStyles();
-  const [flights, setflights] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
- useEffect(() => {
-   fetch("http://localhost:5000/users/Register")
-     {
-      method: 'post',
-      
-      }
-     .then((res) => res.json())
-     .then((data) => setflights(data));
- }, []);
+  const registerFetch = () => {
+    fetch("http://localhost:5000/users/Register", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) =>console.log(data));
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -75,6 +82,7 @@ export default function Register() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                onChange={(e)=>setUsername(e.target.value)}
                 autoComplete="uname"
                 name="userName"
                 variant="outlined"
@@ -106,6 +114,7 @@ export default function Register() {
             </Grid>
           </Grid>
           <Button
+            onClick={registerFetch}
             type="submit"
             fullWidth
             variant="contained"

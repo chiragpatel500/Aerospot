@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -50,16 +51,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const [flights, setflights] = useState([]);
-   useEffect(() => {
-     fetch("http://localhost:5000/users/Login")
-     {
-       method: 'post',
-      }
-       .then((res) => res.json())
-       .then((data) => setLogin(data));
-   }, []);
-
+ const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const loginFetch = () => {
+    fetch("http://localhost:5000/users/Login",
+      {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        }
+        ,
+        body: JSON.stringify({
+          username,
+          password,
+        })
+      })
+        .then((res) => res.json())
+      .then((data) =>
+        
+        console.log(data));
+    
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -72,6 +85,7 @@ export default function Login() {
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
+            onChange={(e) => setUsername(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -83,6 +97,7 @@ export default function Login() {
             autoFocus
           />
           <TextField
+            onChange={(e) => setPassword(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -98,13 +113,14 @@ export default function Login() {
             label="Remember me"
           />
           <Button
+            onClick={loginFetch}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Register
+            Log in
           </Button>
           <Grid container>
             <Grid item xs>
@@ -113,9 +129,9 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link to="/Register" variant="body2">
+              {/* <Link to="/Register" variant="body2">
                 {"Don't have an account? Regsiter Now"}
-              </Link>
+              </Link> */}
             </Grid>
           </Grid>
         </form>
