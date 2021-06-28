@@ -41,7 +41,7 @@ export default function ButtonAppBar() {
               <Button
                 onClick={() => {
                   localStorage.clear();
-                  // dispatch({ type: "CLEAR" })
+               
                   setIsLoggedIn(false);
                   setUser(null);
                   history.push("/");
