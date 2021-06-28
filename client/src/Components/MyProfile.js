@@ -5,7 +5,11 @@ import { AuthContext } from "../context/authContext";
 const MyProfile = () => {
   const [users, setUsers] = useState([]);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
   return (
     <div>
       <img></img>

@@ -17,4 +17,4 @@ const uploadModel = new mongoose.Schema({
    
  
 });
-module.exports = mongoose.model("uploadModel", uploadSchema);
+module.exports = mongoose.model("uploadModel", uploadModelSchema);

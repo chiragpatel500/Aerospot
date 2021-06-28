@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
+const uploadModel = require("../models/uploadModel");
+const jwt = require("jsonwebtoken");
+const passport = require("passport");
 const Post = mongoose.model("Post");
 
-router.post("/ListScreen",(req, res) => {
+router.post("/UploadForm", (req, res) => {
   const { type, flightroute, built, image } = req.body;
   if (!image || !type || !flightroute || !built) {
     return res.status(422).json({ error: "Please add all the fields" });
   }
   req.user.password = undefined;
   const post = new Post({
-    image,
+    image: req.user,
     type,
     built,
-    flightroute: req.user,
+    flightroute,
   });
   post
     .save()

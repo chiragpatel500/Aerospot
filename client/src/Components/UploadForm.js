@@ -8,6 +8,7 @@ const UpLoadForm = () => {
   const [type, setType] = useState("");
   const [route, setRoute] = useState("");
   const [built, setBuilt] = useState("");
+  const [url, setUrl] = useState("");
   const history = useHistory();
    
   useEffect(() => {
@@ -28,7 +29,7 @@ const UpLoadForm = () => {
          .then((res) => res.json())
          .then((data) => {
            if (data.error) {
-             console.log(err);
+             console.log("error");
            } else {
              console.log("posted success fully");
              history.push("/");
