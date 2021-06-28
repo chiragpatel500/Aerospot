@@ -5,12 +5,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   return (
     <div className={classes.root}>
@@ -35,9 +34,9 @@ export default function ButtonAppBar() {
         style={{ backgroundColor: "orange", color: "black" }}
       >
         <Toolbar>
-          {/* <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             <Link to="/Logout">Logout</Link>
-          </Typography> */}
+          </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
           </Typography>
