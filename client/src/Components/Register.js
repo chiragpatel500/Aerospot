@@ -55,7 +55,8 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerFetch = () => {
+  const registerFetch = (e) => {
+    e.preventDefault();
     fetch("http://localhost:5000/users/Register", {
       method: "POST",
       headers: {
@@ -67,7 +68,12 @@ export default function Register() {
       }),
     })
       .then((res) => res.json())
-      .then((data) =>console.log(data));
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        setUser(data.user);
+        setIsLoggedIn(true)
+      });
   };
 
   return (
@@ -84,7 +90,7 @@ export default function Register() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                onChange={(e)=>setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 autoComplete="uname"
                 name="userName"
                 variant="outlined"
@@ -98,6 +104,7 @@ export default function Register() {
 
             <Grid item xs={12}>
               <TextField
+                onChange={(e) => setPassword(e.target.value)}
                 variant="outlined"
                 required
                 fullWidth
@@ -105,7 +112,6 @@ export default function Register() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
               />
             </Grid>
             <Grid item xs={12}>
@@ -115,7 +121,8 @@ export default function Register() {
               />
             </Grid>
           </Grid>
-         <Link to="/ListScreen"><Button
+          {/* <Link to="/ListScreen"> */}
+          <Button
             onClick={registerFetch}
             type="submit"
             fullWidth
@@ -124,7 +131,8 @@ export default function Register() {
             className={classes.submit}
           >
             Sign Up
-          </Button></Link> 
+          </Button>
+          {/* </Link> */}
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/Login" variant="body2">

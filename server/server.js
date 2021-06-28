@@ -28,6 +28,7 @@ passport.use("jwt", jwtStrategy);
 
 app.use("/flights", require("./routes/flights"));
 app.use("/users", require("./routes/users"));
+app.use("/upload", require("./routes/upload"));
 
 app.listen(port, () => {
   console.log("Aerospot Backend");

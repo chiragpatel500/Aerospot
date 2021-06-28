@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-
+  const { state, dispatch } = useContext(AuthContext);
+  const history = useHistory();
+  console.log(state);
   return (
     <div className={classes.root}>
       <AppBar
@@ -35,16 +37,26 @@ export default function ButtonAppBar() {
       >
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/Logout">Logout</Link>
+            {isLoggedIn ? (
+              <Button
+                onClick={() => {
+                  localStorage.clear();
+                  // dispatch({ type: "CLEAR" })
+                  setIsLoggedIn(false);
+                  setUser(null);
+                  history.push("/");
+                }}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button>LogIn</Button>
+            )}
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">AeroSpot</Link>
           </Typography>
-          {isLoggedIn ? (
-            <Link to="/MyProfile">MyProfile</Link>
-          ) : (
-            <Link to="/Home">Logout </Link>
-          )}
+          {isLoggedIn && <Link to="/MyProfile">MyProfile</Link>}
         </Toolbar>
       </AppBar>
     </div>

@@ -10,55 +10,59 @@ const UpLoadForm = () => {
   const [built, setBuilt] = useState("");
   const [url, setUrl] = useState("");
   const history = useHistory();
-   
-  useEffect(() => {
-     if (url) {
-       fetch("/UploadForm", {
-         method: "post",
-         headers: {
-           "Content-Type": "application/json",
-           Authorization: "Bearer " + localStorage.getItem("jwt"),
-         },
-         body: JSON.stringify({
-           type,
-           route,
-           built,
-           image: url,
-         }),
-       })
-         .then((res) => res.json())
-         .then((data) => {
-           if (data.error) {
-             console.log("error");
-           } else {
-             console.log("posted success fully");
-             history.push("/");
-           }
-         })
-         .catch((err) => {
-           console.log(err);
-         });
-     }
-   }, [url]);
-  
-  const PostDetails = () => {
+
+  const uploadPicture = (e) => {
+    e.preventDefault();
+    if (url) {
+      fetch("http://localhost:5000/upload/UploadForm", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          type,
+          flightroute: route,
+          built,
+          image: url,
+        }),
+      })
+        .then((res) => {
+          console.log(`res`, res);
+          // return res.json();
+        })
+        // .then((data) => {
+        //   console.log("posted success fully");
+        //   // history.push("/");
+        // })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const PostDetails = (ev, file) => {
+    ev.preventDefault();
     const data = new FormData();
-    data.append("file", image);
+    data.append("file", file);
     data.append("upload_preset", "aerospot");
     data.append("cloud_name", "chiragpatel500");
     fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
       method: "post",
       body: data,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(`res`, res);
+        return res.json();
+      })
       .then((data) => {
-         setUrl(data.url);
+        console.log(`data`, data);
+        setUrl(data.url);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
 
   return (
     <div className="UpLoadForm">
@@ -67,8 +71,9 @@ const UpLoadForm = () => {
           type="file"
           name="image"
           value={image}
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(ev) => PostDetails(ev, ev.target.files[0])}
         />
+        <img src={url} alt="" />
         <label>
           Type:
           <input
@@ -96,7 +101,7 @@ const UpLoadForm = () => {
             onChange={(e) => setBuilt(e.target.value)}
           />
         </label>
-        <button onClick={() => PostDetails()}>Submit</button>
+        <button onClick={(e) => uploadPicture(e)}>Submit</button>
       </form>
     </div>
   );

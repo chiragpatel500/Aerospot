@@ -13,7 +13,7 @@ const MyProfile = () => {
   return (
     <div>
       <img></img>
-      <h2>userName:</h2>
+      <h2>userName: {user.username}</h2>
       <p>
         Liked images:
         <img alt="" />

@@ -11,40 +11,43 @@ import MyProfile from "./components/MyProfile";
 import UpLoadForm from "./components/UploadForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FlightsContextProvider } from "./context/flightsContext";
+import { AuthContextProvider } from "./context/authContext";
 
 function App() {
   return (
-    <FlightsContextProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/ListScreen">
-              <ListScreen />
-            </Route>
-            <Route exact path="/Details/:flightid">
-              <Details />
-            </Route>
-            <Route exact path="/Login">
-              <Login />
-            </Route>
-            <Route exact path="/Register">
-              <Register />
-            </Route>
-            <Route exact path="/MyProfile">
-              <MyProfile />
-            </Route>
-            <Route exact path="/UploadForm">
-              <UpLoadForm/>
-            </Route>
-          </Switch>
-          <ReturnButton />
-        </div>
-      </Router>
-    </FlightsContextProvider>
+    <AuthContextProvider>
+      <FlightsContextProvider>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/ListScreen">
+                <ListScreen />
+              </Route>
+              <Route exact path="/Details/:flightid">
+                <Details />
+              </Route>
+              <Route exact path="/Login">
+                <Login />
+              </Route>
+              <Route exact path="/Register">
+                <Register />
+              </Route>
+              <Route exact path="/MyProfile">
+                <MyProfile />
+              </Route>
+              <Route exact path="/UploadForm">
+                <UpLoadForm />
+              </Route>
+            </Switch>
+            <ReturnButton />
+          </div>
+        </Router>
+      </FlightsContextProvider>
+    </AuthContextProvider>
   );
 }
 

@@ -31,7 +31,18 @@ router.post("/Register", (req, res) => {
           newUser
             .save()
             .then((user) => {
-              res.send(user);
+              const options = {
+                id: user._id,
+              };
+              const token = jwt.sign(options, secretOrKey, {
+                expiresIn: "48hr",
+              });
+              console.log(token);
+              res.json({
+                success: true,
+                token: token,
+                user,
+              });
             })
             .catch((err) => {
               res.send(err);

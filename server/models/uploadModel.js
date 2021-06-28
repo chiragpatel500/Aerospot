@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const uploadModel = new mongoose.Schema({
+const uploadModelSchema = new mongoose.Schema({
   flightroute: {
     type: String,
   },
@@ -10,11 +10,9 @@ const uploadModel = new mongoose.Schema({
   built: {
     type: Number,
   },
-   image: {
-     type: String,
-     required: true,
+  image: {
+    type: String,
+    required: true,
   },
-   
- 
 });
 module.exports = mongoose.model("uploadModel", uploadModelSchema);

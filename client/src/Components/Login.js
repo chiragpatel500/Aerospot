@@ -16,7 +16,6 @@ import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -43,26 +42,27 @@ export default function Login() {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
-  const loginFetch = () => {
-    fetch("http://localhost:5000/users/Login",
-      {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        }
-        ,
-        body: JSON.stringify({
-          username,
-          password,
-        })
-      })
-        .then((res) => res.json())
-      .then((data) =>
-        
-        console.log(data));
-    
-  }
+
+  const loginFetch = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:5000/users/Login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        setUser(data.user);
+        setIsLoggedIn(true);
+      });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -102,8 +102,8 @@ export default function Login() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Link to="/ListScreen">
-            <Button
+          {/* <Link to="/ListScreen"> */}
+          <Button
             onClick={loginFetch}
             type="submit"
             fullWidth
@@ -112,7 +112,8 @@ export default function Login() {
             className={classes.submit}
           >
             Log in
-          </Button></Link>
+          </Button>
+          {/* </Link> */}
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
