@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const UpLoadForm = () => {
@@ -6,9 +8,40 @@ const UpLoadForm = () => {
   const [type, setType] = useState("");
   const [route, setRoute] = useState("");
   const [built, setBuilt] = useState("");
+  const history = useHistory();
+   
+  useEffect(() => {
+     if (url) {
+       fetch("/UploadForm", {
+         method: "post",
+         headers: {
+           "Content-Type": "application/json",
+           Authorization: "Bearer " + localStorage.getItem("jwt"),
+         },
+         body: JSON.stringify({
+           type,
+           route,
+           built,
+           image: url,
+         }),
+       })
+         .then((res) => res.json())
+         .then((data) => {
+           if (data.error) {
+             console.log(err);
+           } else {
+             console.log("posted success fully");
+             history.push("/");
+           }
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+     }
+   }, [url]);
   
   const PostDetails = () => {
-    const data = newFormData();
+    const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "aerospot");
     data.append("cloud_name", "chiragpatel500");
@@ -18,7 +51,7 @@ const UpLoadForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+         setUrl(data.url);
       })
       .catch((err) => {
         console.log(err);
