@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
- const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
   const loginFetch = () => {
