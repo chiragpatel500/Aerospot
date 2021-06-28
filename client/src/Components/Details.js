@@ -35,7 +35,6 @@ function Details() {
   useEffect(() => {
     fetch(`http://localhost:5000/flights/${flightid}`)
       .then((res) => res.json())
-
       .then((data) => {
         console.log(data);
         setFlightDetail(data);
