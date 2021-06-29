@@ -8,20 +8,6 @@ const MyProfile = () => {
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/users/userid}", {
-  //     method: "post",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + localStorage.getItem("token"),
-  //     },
-  //     body: JSON.stringify({
-  //       image: url,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setUsers(data));
-  // });
 
   const PostPic = (ev, file) => {
     ev.preventDefault();
@@ -54,9 +40,7 @@ const MyProfile = () => {
           <h3>liked images:</h3>
           <h4>My images:</h4>
           <p>
-            <img>{user.image}</img>
-
-            {/* <Button onClick={(e) => PostPic(e)}>add Profile pic</Button> */}
+            <img>Profile Picture:{user.image}</img>
           </p>
         </div>
       )}

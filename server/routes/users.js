@@ -11,7 +11,7 @@ router.post("/Register", (req, res) => {
   //   const reqEmail = req.body.email;
   const reqUsername = req.body.username;
   const reqPassword = req.body.password;
-
+  const reqImage = req.body.image;
   userModel.findOne({ username: reqUsername }, (err, user) => {
     if (err) {
       res.json({ error: err });
@@ -27,6 +27,7 @@ router.post("/Register", (req, res) => {
             username: reqUsername ? reqUsername : "",
             // email: reqEmail,
             password: hash,
+            image: reqImage ? reqImage : "",
           });
           newUser
             .save()
