@@ -26,7 +26,6 @@ function ListScreen() {
 
   useEffect(() => {
     fetch("http://localhost:5000/flights/all")
-    
       .then((res) => res.json())
       .then((data) => setflights(data));
   }, []);

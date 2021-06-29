@@ -21,25 +21,25 @@ router.get(
   }
 );
 
-router.get("/easyjet", (req, res) => {
-  flightModel.find({ airline: "easyjet" }, function (err, flightsuser) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(flightsuser);
-    }
-  });
-});
+// router.get("/easyjet", (req, res) => {
+//   flightModel.find({ airline: "easyjet" }, function (err, flightsuser) {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(flightsuser);
+//     }
+//   });
+// });
 
-router.get("/Lufthansa", (req, res) => {
-  flightModel.find({ airline: "Lufthansa" }, function (err, flightsuser) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(flightsuser);
-    }
-  });
-});
+// router.get("/Lufthansa", (req, res) => {
+//   flightModel.find({ airline: "Lufthansa" }, function (err, flightsuser) {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(flightsuser);
+//     }
+//   });
+// });
 
 router.get(
   "/:id",
@@ -58,9 +58,10 @@ router.get(
           console.log(error);
           res.send(error);
         });
-    } else {
-      res.send("Please login");
     }
+    // else {
+    //   res.send("Please login");
+    // }
   }
 );
 
@@ -76,9 +77,10 @@ router.get(
           res.send(flightsuser);
         }
       });
-    } else {
-      res.send("Please login");
     }
+    // else {
+    //   res.send("Please login");
+    // }
   }
 );
 
