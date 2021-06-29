@@ -54,6 +54,7 @@ export default function Register() {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [image, setImage] = useState("");
 
   const registerFetch = (e) => {
     e.preventDefault();
@@ -65,6 +66,7 @@ export default function Register() {
       body: JSON.stringify({
         username,
         password,
+        image,
       }),
     })
       .then((res) => res.json())
@@ -114,14 +116,18 @@ export default function Register() {
                 id="password"
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
           </Grid>
           {/* <Link to="/ListScreen"> */}
+          <input
+            onChange={(ev) => setImage(ev, ev.target.files[0])}
+            type="file"
+            name="image"
+            label="Profilepic"
+            placeholder=""
+            value={image}
+            
+          />
+
           <Button
             onClick={registerFetch}
             type="submit"

@@ -50,13 +50,6 @@ const MyProfile = () => {
     <div>
       {user && (
         <div>
-          <img></img>
-          <input
-            type="file"
-            name="image"
-            value={image}
-            onChange={(ev) => PostPic(ev, ev.target.files[0])}
-          />
           <h2>userName: {user.username}</h2>
           <h3>liked images:</h3>
           <h4>My images:</h4>
