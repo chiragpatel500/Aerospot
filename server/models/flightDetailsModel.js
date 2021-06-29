@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 const flightDetailSchema = new mongoose.Schema({
+  airline: {
+    type: String, 
+  },
+  image: {
+    type: String,
+  },
   flightroute: {
     type: String,
   },
@@ -9,7 +15,7 @@ const flightDetailSchema = new mongoose.Schema({
   built: {
     type: Number,
   },
-  flightdetail: {
+  flightid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "flightsusers",
   },

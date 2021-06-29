@@ -16,7 +16,7 @@ import { AuthContext } from "../context/authContext";
 const useStyles = makeStyles({
   root: {
     maxWidth: "fitcontent",
-    backgroundColor:"skyblue",
+    backgroundColor: "skyblue",
   },
 });
 
@@ -26,6 +26,7 @@ function ListScreen() {
 
   useEffect(() => {
     fetch("http://localhost:5000/flights/all")
+    
       .then((res) => res.json())
       .then((data) => setflights(data));
   }, []);

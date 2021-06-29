@@ -16,7 +16,7 @@ const UpLoadForm = () => {
     e.preventDefault();
     if (url) {
       // fetch("http://localhost:5000/upload/UploadForm", {
-      fetch("http://localhost:5000/flights",{
+      fetch("http://localhost:5000/upload/flights", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -32,12 +32,12 @@ const UpLoadForm = () => {
       })
         .then((res) => {
           console.log(`res`, res);
-          // return res.json();
+          return res.json();
         })
-        // .then((data) => {
-        //   console.log("posted success fully");
-        //   // history.push("/");
-        // })
+        .then((data) => {
+          console.log("posted success fully", data);
+          history.push("/");
+        })
         .catch((err) => {
           console.log(err);
         });

@@ -16,17 +16,6 @@ function Home() {
           fellow Aero Spotters
         </h5>
       </div>
-      <Link to="/Register">
-        <Button variant="contained" color="primary">
-          Register
-        </Button>
-      </Link>
-      or
-      <Link to="/Login">
-        <Button variant="contained" color="primary">
-          Login
-        </Button>
-      </Link>
       <h1> This app is currently under development</h1>
       <div>
         <Link to="/ListScreen">

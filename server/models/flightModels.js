@@ -5,7 +5,6 @@ const flightSchema = new mongoose.Schema({
   },
   airline: {
     type: String,
-  
   },
 });
 module.exports = mongoose.model('flightsusers', flightSchema);

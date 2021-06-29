@@ -41,7 +41,6 @@ export default function ButtonAppBar() {
               <Button
                 onClick={() => {
                   localStorage.clear();
-               
                   setIsLoggedIn(false);
                   setUser(null);
                   history.push("/");
@@ -50,7 +49,7 @@ export default function ButtonAppBar() {
                 Logout
               </Button>
             ) : (
-              <Button>LogIn</Button>
+              <Link to="/Login"><Button>LogIn</Button></Link>
             )}
           </Typography>
           <Typography variant="h6" className={classes.title}>
