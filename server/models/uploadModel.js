@@ -4,6 +4,9 @@ const uploadModelSchema = new mongoose.Schema({
   flightroute: {
     type: String,
   },
+  airline: {
+    type: String,
+  },
   type: {
     type: String,
   },

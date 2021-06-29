@@ -4,13 +4,14 @@ const uploadModel = require("../models/uploadModel");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
-router.post("/UploadForm", (req, res) => {
-  const { type, flightroute, built, image } = req.body;
+router.post("/flights", (req, res) => {
+  const { type, airline,flightroute, built, image } = req.body;
   console.log(`type`, type);
+   console.log(`airline`, airline);
   console.log(`flightroute`, flightroute);
   console.log(`built`, built);
   console.log(`image`, image);
-  if (!image || !type || !flightroute || !built) {
+  if (!image || !type || !flightroute || !built || !airline) {
     return res.status(422).json({ error: "Please add all the fields" });
   }
   // req.user.password = undefined;
@@ -18,6 +19,7 @@ router.post("/UploadForm", (req, res) => {
     image: image,
     type,
     built,
+    airline,
     flightroute,
   });
   console.log(`upload`, upload);

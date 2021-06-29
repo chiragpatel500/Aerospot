@@ -5,6 +5,7 @@ import { AuthContext } from "../context/authContext";
 
 const UpLoadForm = () => {
   const [image, setImage] = useState("");
+  const [airline, setAirline] = useState("");
   const [type, setType] = useState("");
   const [route, setRoute] = useState("");
   const [built, setBuilt] = useState("");
@@ -14,7 +15,8 @@ const UpLoadForm = () => {
   const uploadPicture = (e) => {
     e.preventDefault();
     if (url) {
-      fetch("http://localhost:5000/upload/UploadForm", {
+      // fetch("http://localhost:5000/upload/UploadForm", {
+      fetch("http://localhost:5000/flights",{
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -22,6 +24,7 @@ const UpLoadForm = () => {
         },
         body: JSON.stringify({
           type,
+          airline,
           flightroute: route,
           built,
           image: url,
@@ -74,6 +77,15 @@ const UpLoadForm = () => {
           onChange={(ev) => PostDetails(ev, ev.target.files[0])}
         />
         <img src={url} alt="" />
+        <label>
+          Airline:
+          <input
+            type="text"
+            name="type"
+            value={airline}
+            onChange={(e) => setAirline(e.target.value)}
+          />
+        </label>
         <label>
           Type:
           <input
