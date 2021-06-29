@@ -25,7 +25,12 @@ function ListScreen() {
   const classes = useStyles();
 
   useEffect(() => {
-    fetch("http://localhost:5000/flights/all")
+    fetch("http://localhost:5000/flights/all", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
       .then((res) => res.json())
       .then((data) => setflights(data));
   }, []);
@@ -51,7 +56,15 @@ function ListScreen() {
                       {flight.airline}
                     </Typography>
                   </CardContent>
+                  {flight.postedBy && (
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {flight.postedBy}
+                      </Typography>
+                    </CardContent>
+                  )}
                 </CardActionArea>
+
                 <CardActions
                   style={{
                     backgroundColor: "skyblue",

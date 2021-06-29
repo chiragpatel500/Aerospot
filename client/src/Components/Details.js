@@ -33,7 +33,12 @@ function Details() {
   const classes = useStyles();
   let { flightid } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/flights/${flightid}`)
+    fetch(`http://localhost:5000/flights/${flightid}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
