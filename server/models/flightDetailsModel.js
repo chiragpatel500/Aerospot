@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const flightDetailSchema = new mongoose.Schema({
   airline: {
-    type: String, 
+    type: String,
   },
   image: {
     type: String,
@@ -19,5 +19,12 @@ const flightDetailSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "flightsusers",
   },
+  likes: [{ type: ObjectId, ref: "flightsusers" }],
+  comments: [
+    {
+      text: String,
+      postedBy: { type: ObjectId, ref: "flightsusers" },
+    },
+  ],
 });
 module.exports = mongoose.model("filghtdetail", flightDetailSchema);
