@@ -49,92 +49,90 @@ function Details() {
       });
   }, []);
 
+  // const likePost = (id) => {
+  //   fetch("/like", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + localStorage.getItem("jwt"),
+  //     },
+  //     body: JSON.stringify({
+  //       postId: id,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       //   console.log(result)
+  //       const newData = data.map((item) => {
+  //         if (item._id == result._id) {
+  //           return result;
+  //         } else {
+  //           return item;
+  //         }
+  //       });
+  //       setData(newData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  // const unlikePost = (id) => {
+  //   fetch("/unlike", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + localStorage.getItem("jwt"),
+  //     },
+  //     body: JSON.stringify({
+  //       postId: id,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       //   console.log(result)
+  //       const newData = data.map((item) => {
+  //         if (item._id == result._id) {
+  //           return result;
+  //         } else {
+  //           return item;
+  //         }
+  //       });
+  //       setData(newData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
- const likePost = (id) => {
-   fetch("/like", {
-     method: "put",
-     headers: {
-       "Content-Type": "application/json",
-       Authorization: "Bearer " + localStorage.getItem("jwt"),
-     },
-     body: JSON.stringify({
-       postId: id,
-     }),
-   })
-     .then((res) => res.json())
-     .then((result) => {
-       //   console.log(result)
-       const newData = data.map((item) => {
-         if (item._id == result._id) {
-           return result;
-         } else {
-           return item;
-         }
-       });
-       setData(newData);
-     })
-     .catch((err) => {
-       console.log(err);
-     });
- };
- const unlikePost = (id) => {
-   fetch("/unlike", {
-     method: "put",
-     headers: {
-       "Content-Type": "application/json",
-       Authorization: "Bearer " + localStorage.getItem("jwt"),
-     },
-     body: JSON.stringify({
-       postId: id,
-     }),
-   })
-     .then((res) => res.json())
-     .then((result) => {
-       //   console.log(result)
-       const newData = data.map((item) => {
-         if (item._id == result._id) {
-           return result;
-         } else {
-           return item;
-         }
-       });
-       setData(newData);
-     })
-     .catch((err) => {
-       console.log(err);
-     });
- };
+  const makeComment = (text, postId) => {
+    fetch("/comment", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId,
+        text,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        const newData = data.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
- const makeComment = (text, postId) => {
-   fetch("/comment", {
-     method: "put",
-     headers: {
-       "Content-Type": "application/json",
-       Authorization: "Bearer " + localStorage.getItem("jwt"),
-     },
-     body: JSON.stringify({
-       postId,
-       text,
-     }),
-   })
-     .then((res) => res.json())
-     .then((result) => {
-       console.log(result);
-       const newData = data.map((item) => {
-         if (item._id == result._id) {
-           return result;
-         } else {
-           return item;
-         }
-       });
-       setData(newData);
-     })
-     .catch((err) => {
-       console.log(err);
-     });
- };
-
- 
   return (
     <div>
       <h1> This app is currently under development</h1>
@@ -172,7 +170,7 @@ function Details() {
               width: "fitcontent",
             }}
           >
-            {item.likes.includes(state._id) ? (
+            {/* {item.likes.includes(state._id) ? (
               <Button
                 size="small"
                 color="primary"
@@ -194,12 +192,12 @@ function Details() {
                 <ThumbdownIcon />
                 Unlike
               </Button>
-            )}
-            <h6>{item.likes.length} likes</h6>
+            )} */}
+            {/* <h6>{item.likes.length} likes</h6>
             <h6>{item.title}</h6>
-            <p>{item.body}</p>
+            <p>{item.body}</p> */}
 
-            {item.comments.map((record) => {
+            {/* {item.comments.map((record) => {
               return (
                 <h6 key={record._id}>
                   <span style={{ fontWeight: "500" }}>
@@ -208,8 +206,8 @@ function Details() {
                   {record.text}
                 </h6>
               );
-            })}
-            <form
+            })} */}
+            {/* <form
               onSubmit={(e) => {
                 e.preventDefault();
                 makeComment(e.target[0].value, item._id);
@@ -219,7 +217,7 @@ function Details() {
                 <CommentIcon /> Comment
                 <input type="text" placeholder="add a comment" />
               </Button>
-            </form>
+            </form> */}
 
             <Button size="small" color="primary">
               <ShareIcon /> Share

@@ -27,7 +27,9 @@ router.post("/Register", (req, res) => {
             username: reqUsername ? reqUsername : "",
             // email: reqEmail,
             password: hash,
-            image: reqImage ? reqImage : "",
+            image: reqImage
+              ? reqImage
+              : "https://images-na.ssl-images-amazon.com/images/I/519OiBnEEdL._AC_.jpg",
           });
           newUser
             .save()
@@ -101,4 +103,22 @@ router.get(
   }
 );
 
+router.put(
+  "/updatePic",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    userModel.findByIdAndUpdate(
+      req.user.id,
+      { image: req.body.image },
+      (err, updatedUser) => {
+        if (err) {
+          res.send(err);
+        } else {
+          console.log(`updatedUser`, updatedUser);
+          res.send(updatedUser);
+        }
+      }
+    );
+  }
+);
 module.exports = router;

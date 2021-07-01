@@ -55,7 +55,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
-
+  const [url, setUrl] = useState("");
   const registerFetch = (e) => {
     e.preventDefault();
     fetch("http://localhost:5000/users/Register", {
@@ -74,10 +74,31 @@ export default function Register() {
         console.log(data);
         localStorage.setItem("token", data.token);
         setUser(data.user);
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
       });
   };
-
+  const PostImage = (ev, file) => {
+    ev.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "aerospot");
+    data.append("cloud_name", "chiragpatel500");
+    fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => {
+        console.log(`res`, res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(`data`, data);
+        setUrl(data.url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -119,13 +140,12 @@ export default function Register() {
           </Grid>
           {/* <Link to="/ListScreen"> */}
           <input
-            onChange={(ev) => setImage(ev, ev.target.files[0])}
+            onChange={(ev) => PostImage(ev, ev.target.files[0])}
             type="file"
             name="image"
             label="Profilepic"
             placeholder=""
             value={image}
-            
           />
 
           <Button
