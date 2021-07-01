@@ -138,6 +138,8 @@ function Details() {
       .catch((err) => {
         console.log(err);
       });
+    
+    
   };
 
   return (
