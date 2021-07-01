@@ -7,13 +7,13 @@ const MyProfile = () => {
   const [users, setUsers] = useState([]);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  // const [url, setUrl] = useState("");
   const [mypics, setPics] = useState([]);
   // const { state, dispatch } = useContext(UserContext);
 
-  useEffect(() => {
-    console.log("updating pic");
+  const updateProfilePicture = (newUrl) => {
     //write fetch (method: PUT) to update pic
+    console.log(`newUrl`, newUrl);
     fetch("http://localhost:5000/users/updatePic", {
       method: "Put",
       headers: {
@@ -21,7 +21,7 @@ const MyProfile = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        image,
+        image: newUrl,
       }),
     })
       .then((res) => {
@@ -30,13 +30,15 @@ const MyProfile = () => {
       })
       .then((data) => {
         console.log(`data`, data);
-        setUrl(data.url);
+        // setUrl(data.image);
+        alert("Profile picture succesfully updated");
+        setUser({ ...user, image: data.image });
       })
       .catch((error) => {
         console.log("error");
       });
-  });
-      // remember to: add token, add the url to the body of the request
+  };
+  // remember to: add token, add the url to the body of the request
   const changeImage = (ev, file) => {
     ev.preventDefault();
     const data = new FormData();
@@ -53,7 +55,8 @@ const MyProfile = () => {
       })
       .then((data) => {
         console.log(`data`, data);
-        setUrl(data.url);
+        // setUrl(data.url);
+        updateProfilePicture(data.url);
       })
       .catch((err) => {
         console.log(err);

@@ -107,6 +107,7 @@ router.put(
   "/updatePic",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(`req.body.image`, req.body.image);
     userModel.findByIdAndUpdate(
       req.user.id,
       { image: req.body.image },

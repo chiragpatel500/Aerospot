@@ -31,7 +31,7 @@ router.get(
       flightDetailsModel
         .findOne({ flightid: flightsId })
         .then((flightdetails) => {
-          console.log(flightdetails);
+          console.log("is this the null", flightdetails);
           res.send(flightdetails);
         })
         .catch((error) => {
@@ -105,26 +105,37 @@ router.put(
       text: req.body.text,
       postedBy: req.user._id,
     };
-    Post.findByIdAndUpdate(
-      req.body.postId,
-      {
-        $push: { comments: comment },
-      },
-      {
-        new: true,
-      }
-    )
-      .populate("comments.postedBy", "_id username")
-      .populate("postedBy", "_id username")
-      .exec((err, result) => {
-        if (err) {
-          return res.status(422).json({ error: err });
-        } else {
-          res.json(result);
+    console.log(` req.body.flightDetailId`, req.body.flightDetailId);
+    flightDetailsModel
+      .findByIdAndUpdate(
+        req.body.flightDetailId,
+        {
+          $push: { comments: comment },
+        },
+        {
+          new: true,
+          useFindAndModify: true,
+        },
+        (err, flightDetail) => {
+          if (err) {
+            console.log(err);
+            return res.json(err);
+          } else {
+            console.log(flightDetail);
+            return res.json(flightDetail);
+          }
         }
-      });
+      )
+      .populate("comments.postedBy", "_id username");
+    // .populate("postedBy", "_id username")
+    // .exec((err, result) => {
+    //   if (err) {
+    //     return res.status(422).json({ error: err });
+    //   } else {
+    //     res.json(result);
+    //   }
+    // });
   }
 );
-
 
 module.exports = router;

@@ -18,7 +18,6 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setIsLoggedIn(true);
       fetch("http://localhost:5000/users/MyProfile", {
         headers: {
           "Content-Type": "application/json",
@@ -27,6 +26,7 @@ export const AuthContextProvider = ({ children }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          setIsLoggedIn(true);
           setUser(data);
         })
         .catch((err) => console.log(err));
