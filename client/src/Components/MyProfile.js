@@ -18,8 +18,8 @@ const MyProfile = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        setPics(result.mypost);
+        console.log(MyProfile);
+        setPics(result.MyProfile);
       });
   }, []);
 
@@ -70,13 +70,13 @@ const MyProfile = () => {
         onChange={(ev) => updateImage(ev, ev.target.files[0])}
       />
       <div>
-      My Pics : {mypics.map((item) => {
+      My Pics : {mypics.map((username) => {
         return (
           <img
-            key={item._id}
+            key={username._id}
             className="item"
-            src={item.photo}
-            alt={item.title}
+            src={username.photo}
+            alt={username.title}
           />
         );
       })}
