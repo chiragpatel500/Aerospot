@@ -36,7 +36,7 @@ const UpLoadForm = () => {
         })
         .then((data) => {
           console.log("posted success fully", data);
-          history.push("/");
+          history.push("/ListScreen");
         })
         .catch((err) => {
           console.log(err);

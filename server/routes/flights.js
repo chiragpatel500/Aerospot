@@ -59,9 +59,6 @@ router.get(
         }
       });
     }
-    // else {
-    //   res.send("Please login");
-    // }
   }
 );
 
@@ -117,8 +114,8 @@ router.put(
         new: true,
       }
     )
-      .populate("comments.postedBy", "_id name")
-      .populate("postedBy", "_id name")
+      .populate("comments.postedBy", "_id username")
+      .populate("postedBy", "_id username")
       .exec((err, result) => {
         if (err) {
           return res.status(422).json({ error: err });

@@ -9,6 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import CommentIcon from "@material-ui/icons/Comment";
 import ShareIcon from "@material-ui/icons/Share";
 import {
@@ -29,11 +30,14 @@ const useStyles = makeStyles({
 });
 
 function Details() {
-  const [data, setData] = useState([]);
-  // const [state, useState] = useContext;
+  // const [user, setUser] = useState;
   const [flightDetail, setFlightDetail] = useState(null);
   const classes = useStyles();
-  
+  const [item, setItem] = useState([]);
+  const [data, setData] = useState([]);
+  const [state, setState] = useContext([]);
+  // const [likepost, setLikePost] = useState([]);
+  //   const [unlikepost, setLikePost] = useState([]);
   let { flightid } = useParams();
 
   useEffect(() => {
@@ -105,7 +109,7 @@ function Details() {
   //     });
   // };
 
-  const makeComment = (text, postId) => {
+  const makeComment = (text, user_Id) => {
     fetch("/comment", {
       method: "put",
       headers: {
@@ -113,7 +117,7 @@ function Details() {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        postId,
+        user_Id,
         text,
       }),
     })
@@ -171,13 +175,13 @@ function Details() {
               width: "fitcontent",
             }}
           >
-            {/* {item.likes.includes(state._id) ? (
+            {item.likes.includes(state._id) ? (
               <Button
                 size="small"
                 color="primary"
-                onClick={() => {
-                  likePost(item._id);
-                }}
+                // onClick={() => {
+                //   likePost(item._id);
+                // }}
               >
                 <ThumbUpIcon />
                 like
@@ -186,19 +190,19 @@ function Details() {
               <Button
                 size="small"
                 color="primary"
-                onClick={() => {
-                  unlikePost(item._id);
-                }}
+                // onClick={() => {
+                //   unlikePost(item._id);
+                // }}
               >
-                <ThumbdownIcon />
+                <ThumbDownIcon />
                 Unlike
               </Button>
-            )} */}
-            {/* <h6>{item.likes.length} likes</h6>
+            )}
+            <h6>{item.likes.length} likes</h6>
             <h6>{item.title}</h6>
-            <p>{item.body}</p> */}
-
-            {/* {item.comments.map((record) => {
+            <p>{item.body}</p>
+            {/* 
+            {item.comments.map((record) => {
               return (
                 <h6 key={record._id}>
                   <span style={{ fontWeight: "500" }}>
@@ -208,7 +212,8 @@ function Details() {
                 </h6>
               );
             })} */}
-            {/* <form
+
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 makeComment(e.target[0].value, item._id);
@@ -218,7 +223,7 @@ function Details() {
                 <CommentIcon /> Comment
                 <input type="text" placeholder="add a comment" />
               </Button>
-            </form> */}
+            </form>
 
             <Button size="small" color="primary">
               <ShareIcon /> Share

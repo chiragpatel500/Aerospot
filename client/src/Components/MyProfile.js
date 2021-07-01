@@ -14,7 +14,7 @@ const MyProfile = () => {
   useEffect(() => {
     console.log("updating pic");
     //write fetch (method: PUT) to update pic
-    fetch("/updatePic", {
+    fetch("http://localhost:5000/users/updatePic", {
       method: "Put",
       headers: {
         "Content-Type": "application/json",
@@ -22,23 +22,21 @@ const MyProfile = () => {
       },
       body: JSON.stringify({
         image,
-      })
-    });
-    
+      }),
+    })
       .then((res) => {
         console.log(`res`, res);
         return res.json();
-      });
-        .then((data) => {
+      })
+      .then((data) => {
         console.log(`data`, data);
         setUrl(data.url);
+      })
+      .catch((error) => {
+        console.log("error");
       });
-        .catch((err) => {
-          console.log(err);
   });
-
       // remember to: add token, add the url to the body of the request
-  });
   const changeImage = (ev, file) => {
     ev.preventDefault();
     const data = new FormData();
