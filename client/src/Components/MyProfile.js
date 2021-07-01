@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Button from "@material-ui/core/Button";
+
 const MyProfile = () => {
   const [users, setUsers] = useState([]);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -12,32 +13,32 @@ const MyProfile = () => {
 
   useEffect(() => {
     console.log("updating pic");
-    //write fetch (method: PUT) to update pic 
-    fetch("https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
+    //write fetch (method: PUT) to update pic
+    fetch("/updatePic", {
       method: "Put",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body:JSON.stringify({
-        image
+      body: JSON.stringify({
+        image,
       })
-        .then((res) => {
+    });
+    
+      .then((res) => {
         console.log(`res`, res);
         return res.json();
-      })
-      .then((data) => {
+      });
+        .then((data) => {
         console.log(`data`, data);
         setUrl(data.url);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    
-    // remember to: add token, add the url to the body of the request
+      });
+        .catch((err) => {
+          console.log(err);
+  });
 
-  }, [url]);
-
+      // remember to: add token, add the url to the body of the request
+  });
   const changeImage = (ev, file) => {
     ev.preventDefault();
     const data = new FormData();
@@ -61,10 +62,6 @@ const MyProfile = () => {
       });
   };
   console.log(`user`, user);
-
-  // const updateImage = (file) => {
-  //   setImage(file);
-  // };
 
   return (
     <div>
@@ -103,4 +100,5 @@ const MyProfile = () => {
     </div>
   );
 };
+
 export default MyProfile;

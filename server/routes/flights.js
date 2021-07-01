@@ -21,26 +21,6 @@ router.get(
   }
 );
 
-// router.get("/easyjet", (req, res) => {
-//   flightModel.find({ airline: "easyjet" }, function (err, flightsuser) {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(flightsuser);
-//     }
-//   });
-// });
-
-// router.get("/Lufthansa", (req, res) => {
-//   flightModel.find({ airline: "Lufthansa" }, function (err, flightsuser) {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(flightsuser);
-//     }
-//   });
-// });
-
 router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -149,24 +129,5 @@ router.put(
   }
 );
 
-// router.delete("/deletepost/:postId", (req, res) => {
-//   Post.findOne({ _id: req.params.postId })
-//     .populate("postedBy", "_id")
-//     .exec((err, post) => {
-//       if (err || !post) {
-//         return res.status(422).json({ error: err });
-//       }
-//       if (post.postedBy._id.toString() === req.user._id.toString()) {
-//         post
-//           .remove()
-//           .then((result) => {
-//             res.json(result);
-//           })
-//           .catch((err) => {
-//             console.log(err);
-//           });
-//       }
-//     });
-// });
 
 module.exports = router;

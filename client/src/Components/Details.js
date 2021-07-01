@@ -29,10 +29,11 @@ const useStyles = makeStyles({
 });
 
 function Details() {
+  const [data, setData] = useState([]);
+  // const [state, useState] = useContext;
   const [flightDetail, setFlightDetail] = useState(null);
   const classes = useStyles();
-  const [data, setData] = useState([]);
-  const [state, useState] = useContext;
+  
   let { flightid } = useParams();
 
   useEffect(() => {
