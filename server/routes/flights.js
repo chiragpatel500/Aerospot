@@ -127,8 +127,8 @@ router.put(
         }
       )
       .populate("comments.postedBy", "_id username");
-    // .populate("postedBy", "_id username")
-    // .exec((err, result) => {
+    //   .populate("postedBy.postedBy", "_id username");
+    //   .exec((err, result) => {
     //   if (err) {
     //     return res.status(422).json({ error: err });
     //   } else {
