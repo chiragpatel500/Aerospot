@@ -15,7 +15,6 @@ const UpLoadForm = () => {
   const uploadPicture = (e) => {
     e.preventDefault();
     if (url) {
-      // fetch("http://localhost:5000/upload/UploadForm", {
       fetch("http://localhost:5000/upload/flights", {
         method: "post",
         headers: {
@@ -52,6 +51,10 @@ const UpLoadForm = () => {
     data.append("cloud_name", "chiragpatel500");
     fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
       method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
       body: data,
     })
       .then((res) => {
