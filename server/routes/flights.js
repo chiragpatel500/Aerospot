@@ -62,37 +62,41 @@ router.get(
   }
 );
 
-// router.put("/like", (req, res) => {
-//   Post.findByIdAndUpdate(
-//     req.body.postId,
+// router.put("/like", passport.authenticate("jwt", { session: false }),
+// (req, res) => {
+//     flightDetailsModel.findByIdAndUpdate(
+//     req.body.flightDetailId,
 //     {
 //       $push: { likes: req.user._id },
 //     },
 //     {
 //       new: true,
 //     }
-//   ).exec((err, result) => {
+//   ).exec((err,flightDetail) => {
 //     if (err) {
 //       return res.status(422).json({ error: err });
 //     } else {
-//       res.json(result);
+   //  console.log(flightDetail);
+//       res.json(flightDetail);
 //     }
 //   });
 // });
-// router.put("/unlike", (req, res) => {
-//   Post.findByIdAndUpdate(
-//     req.body.postId,
+// router.put("/unlike",passport.authenticate("jwt", { session: false }),
+// (req, res) => {
+//     flightDetailsModel.findByIdAndUpdate(
+//     req.body.flightDetailId,
 //     {
 //       $pull: { likes: req.user._id },
 //     },
 //     {
 //       new: true,
 //     }
-//   ).exec((err, result) => {
+//   ).exec((err, flightDetail) => {
 //     if (err) {
 //       return res.status(422).json({ error: err });
 //     } else {
-//       res.json(result);
+  //  console.log(flightDetail);
+//       res.json(flightDetail);
 //     }
 //   });
 // });

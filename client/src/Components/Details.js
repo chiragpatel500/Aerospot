@@ -57,7 +57,7 @@ function Details() {
   }, []);
 
   const likePost = (id) => {
-    fetch("/like", {
+    fetch("http://localhost:5000/flights/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ function Details() {
       });
   };
   const unlikePost = (id) => {
-    fetch("/unlike", {
+    fetch("http://localhost:5000/flights/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -180,12 +180,12 @@ function Details() {
               width: "fitcontent",
             }}
           >
-            {/* {item.likes.includes(state._id) ? (
+            {/* {flightDetail.likes.includes(flightDetail._id) ? (
               <Button
                 size="small"
                 color="primary"
                 // onClick={() => {
-                //   likePost(item._id);
+                //   likePost(flightDetail._id);
                 // }}
               >
                 <ThumbUpIcon />
@@ -196,23 +196,23 @@ function Details() {
                 size="small"
                 color="primary"
                 // onClick={() => {
-                //   unlikePost(item._id);
+                //   unlikePost(flightDetail._id);
                 // }}
               >
                 <ThumbDownIcon />
                 Unlike
               </Button>
             )} */}
-            {/* <h6>{item.likes.length} likes</h6>
-            <h6>{item.title}</h6>
-            <p>{item.body}</p> */}
+            {/* <h6>{flightDetail.likes.length} likes</h6>
+            <h6>{flightDetail.title}</h6>
+            <p>{flightDetail.body}</p> */}
 
             {flightDetail.comments.map((record) => {
               return (
                 <h6 key={record._id}>
                   <span style={{ fontWeight: "500" }}>
                     {record.postedBy.username}
-                  </span>{" "}
+                  </span>
                   {record.text}
                 </h6>
               );

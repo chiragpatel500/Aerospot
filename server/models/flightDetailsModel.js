@@ -31,4 +31,5 @@ const flightDetailSchema = new mongoose.Schema({
     },
   ],
 });
+
 module.exports = mongoose.model("filghtdetail", flightDetailSchema);
