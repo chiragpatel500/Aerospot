@@ -62,44 +62,44 @@ router.get(
   }
 );
 
-// router.put("/like", passport.authenticate("jwt", { session: false }),
-// (req, res) => {
-//     flightDetailsModel.findByIdAndUpdate(
-//     req.body.flightDetailId,
-//     {
-//       $push: { likes: req.user._id },
-//     },
-//     {
-//       new: true,
-//     }
-//   ).exec((err,flightDetail) => {
-//     if (err) {
-//       return res.status(422).json({ error: err });
-//     } else {
-   //  console.log(flightDetail);
-//       res.json(flightDetail);
-//     }
-//   });
-// });
-// router.put("/unlike",passport.authenticate("jwt", { session: false }),
-// (req, res) => {
-//     flightDetailsModel.findByIdAndUpdate(
-//     req.body.flightDetailId,
-//     {
-//       $pull: { likes: req.user._id },
-//     },
-//     {
-//       new: true,
-//     }
-//   ).exec((err, flightDetail) => {
-//     if (err) {
-//       return res.status(422).json({ error: err });
-//     } else {
-  //  console.log(flightDetail);
-//       res.json(flightDetail);
-//     }
-//   });
-// });
+router.put("/like", passport.authenticate("jwt", { session: false }),
+(req, res) => {
+    flightDetailsModel.findByIdAndUpdate(
+    req.body.flightDetailId,
+    {
+      $push: { likes: req.user._id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err,flightDetail) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+    console.log(flightDetail);
+      res.json(flightDetail);
+    }
+  });
+});
+router.put("/unlike",passport.authenticate("jwt", { session: false }),
+(req, res) => {
+    flightDetailsModel.findByIdAndUpdate(
+    req.body.flightDetailId,
+    {
+      $pull: { likes: req.user._id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, flightDetail) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+   console.log(flightDetail);
+      res.json(flightDetail);
+    }
+  });
+});
 
 router.put(
   "/comment",
@@ -109,7 +109,7 @@ router.put(
       text: req.body.text,
       postedBy: req.user._id,
     };
-    console.log(` req.body.flightDetailId`, req.body.flightDetailId);
+    console.log(`req.body.flightDetailId`, req.body.flightDetailId);
     flightDetailsModel
       .findByIdAndUpdate(
         req.body.flightDetailId,

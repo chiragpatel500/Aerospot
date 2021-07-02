@@ -56,7 +56,7 @@ function Details() {
       .catch((err) => console.log(err));
   }, []);
 
-  const likePost = (id) => {
+  const likePost = (flightDetailId) => {
     fetch("http://localhost:5000/flights/like", {
       method: "put",
       headers: {
@@ -64,13 +64,13 @@ function Details() {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        postId: id,
+      flightDetailId,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-        //   console.log(result)
-        const newData = data.map((item) => {
+          console.log(result)
+        const newData = result.map((item) => {
           if (item._id == result._id) {
             return result;
           } else {
@@ -80,10 +80,10 @@ function Details() {
         setData(newData);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("error");
       });
   };
-  const unlikePost = (id) => {
+  const unlikePost = (flightDetailId) => {
     fetch("http://localhost:5000/flights/unlike", {
       method: "put",
       headers: {
@@ -91,13 +91,13 @@ function Details() {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        postId: id,
+         flightDetailId,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-        //   console.log(result)
-        const newData = data.map((item) => {
+          console.log(result)
+        const newData = result.map((item) => {
           if (item._id == result._id) {
             return result;
           } else {
@@ -107,7 +107,7 @@ function Details() {
         setData(newData);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("error");
       });
   };
 
@@ -138,9 +138,8 @@ function Details() {
       .catch((err) => {
         console.log(err);
       });
-    
-    
   };
+
 
   return (
     <div>
@@ -180,32 +179,27 @@ function Details() {
               width: "fitcontent",
             }}
           >
-            {/* {flightDetail.likes.includes(flightDetail._id) ? (
-              <Button
-                size="small"
-                color="primary"
-                // onClick={() => {
-                //   likePost(flightDetail._id);
-                // }}
-              >
-                <ThumbUpIcon />
-                like
-              </Button>
-            ) : (
-              <Button
-                size="small"
-                color="primary"
-                // onClick={() => {
-                //   unlikePost(flightDetail._id);
-                // }}
-              >
-                <ThumbDownIcon />
-                Unlike
-              </Button>
-            )} */}
-            {/* <h6>{flightDetail.likes.length} likes</h6>
-            <h6>{flightDetail.title}</h6>
-            <p>{flightDetail.body}</p> */}
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => {
+                likePost(flightDetail._id);
+              }}
+            >
+              <ThumbUpIcon />
+            </Button>
+
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => {
+                unlikePost(flightDetail._id);
+              }}
+            >
+              <ThumbDownIcon />
+            </Button>
+
+            <h6>{flightDetail.likes.length} likes</h6>
 
             {flightDetail.comments.map((record) => {
               return (
