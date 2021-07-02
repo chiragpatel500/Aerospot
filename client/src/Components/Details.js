@@ -173,12 +173,14 @@ function Details() {
 
           <CardActions
             style={{
+              display: "flex",
+              gridRow:"column",
               backgroundColor: "skyblue",
               color: "black",
               justifyContent: "center",
               width: "fitcontent",
             }}
-          >
+          >{flightDetail.includes.likes ( 
             <Button
               size="small"
               color="primary"
@@ -188,19 +190,34 @@ function Details() {
             >
               <ThumbUpIcon />
             </Button>
-
+            ) : (
             <Button
               size="small"
               color="primary"
               onClick={() => {
                 unlikePost(flightDetail._id);
               }}
-            >
-              <ThumbDownIcon />
+            >              <ThumbDownIcon />
             </Button>
-
+            )
+               };
             <h6>{flightDetail.likes.length} likes</h6>
 
+       
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                makeComment(e.target[0].value, flightDetail._id);
+              }}
+            >
+              <Button size="small" color="primary" type="submit">
+                <CommentIcon /> Comment
+              </Button>
+              <input size="small" type="text" placeholder="add a comment" />
+            
+            </form>
+            
             {flightDetail.comments.map((record) => {
               return (
                 <h6 key={record._id}>
@@ -211,18 +228,6 @@ function Details() {
                 </h6>
               );
             })}
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                makeComment(e.target[0].value, flightDetail._id);
-              }}
-            >
-              <input type="text" placeholder="add a comment" />
-              <Button size="small" color="primary" type="submit">
-                <CommentIcon /> Comment
-              </Button>
-            </form>
 
             <Button size="small" color="primary">
               <ShareIcon /> Share

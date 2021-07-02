@@ -69,7 +69,7 @@ const MyProfile = () => {
       {user && (
         <div>
           <h2>userName: {user.username}</h2>
-          <h3>liked images:</h3>
+          <h3>liked images:{}</h3>
           <h4>My images:</h4>
           <p>Profile Picture:</p>
           <img src={user.image} alt="user profile" />
