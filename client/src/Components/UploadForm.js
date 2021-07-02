@@ -75,7 +75,7 @@ const UpLoadForm = () => {
           value={image}
           onChange={(ev) => PostDetails(ev, ev.target.files[0])}
         />
-        <img src={url} alt=""/>
+        <img src={url} alt="" />
         <label>
           Airline:
           <input

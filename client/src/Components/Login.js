@@ -15,14 +15,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "skyblue",
+   backgroundColor:"skyblue",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -42,6 +44,7 @@ export default function Login() {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const loginFetch = (e) => {
     e.preventDefault();
@@ -61,6 +64,12 @@ export default function Login() {
         localStorage.setItem("token", data.token);
         setUser(data.user);
         setIsLoggedIn(true);
+        console.log("Loggedin success fully", data);
+        history.push("/ListScreen");
+      })
+      .catch((err) => {
+        alert("Login id not found kindly register")
+        console.log("login id not found please register");
       });
   };
   return (
@@ -102,7 +111,7 @@ export default function Login() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          {/* <Link to="/ListScreen"> */}
+    
           <Button
             onClick={loginFetch}
             type="submit"
@@ -113,7 +122,7 @@ export default function Login() {
           >
             Log in
           </Button>
-          {/* </Link> */}
+       
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -128,9 +137,7 @@ export default function Login() {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={8}>
-                <Copyright />
-            </Box> */}
+     
     </Container>
   );
 }
