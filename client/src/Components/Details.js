@@ -180,7 +180,8 @@ function Details() {
               justifyContent: "center",
               width: "fitcontent",
             }}
-          >{flightDetail.includes.likes ( 
+          >
+            
             <Button
               size="small"
               color="primary"
@@ -190,20 +191,19 @@ function Details() {
             >
               <ThumbUpIcon />
             </Button>
-            ) : (
+   
             <Button
               size="small"
               color="primary"
               onClick={() => {
                 unlikePost(flightDetail._id);
               }}
-            >              <ThumbDownIcon />
+            >
+              <ThumbDownIcon />
             </Button>
-            )
-               };
+            
+          
             <h6>{flightDetail.likes.length} likes</h6>
-
-       
 
             <form
               onSubmit={(e) => {
