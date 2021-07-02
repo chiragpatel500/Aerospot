@@ -68,7 +68,7 @@ export default function Login() {
         history.push("/ListScreen");
       })
       .catch((err) => {
-        alert("Login id not found kindly register")
+        alert("user not found please register")
         console.log("login id not found please register");
       });
   };
