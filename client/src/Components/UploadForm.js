@@ -51,10 +51,6 @@ const UpLoadForm = () => {
     data.append("cloud_name", "chiragpatel500");
     fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
       method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
       body: data,
     })
       .then((res) => {
@@ -79,7 +75,7 @@ const UpLoadForm = () => {
           value={image}
           onChange={(ev) => PostDetails(ev, ev.target.files[0])}
         />
-        <img src={url} alt="" />
+        <img src={url} alt=""/>
         <label>
           Airline:
           <input
