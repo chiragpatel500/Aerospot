@@ -30,6 +30,7 @@ router.get(
       console.log(flightsId);
       flightDetailsModel
         .findOne({ flightid: flightsId })
+        .populate({ path: "comments", populate: { path: "postedBy" } })
         .then((flightdetails) => {
           console.log("is this the null", flightdetails);
           res.send(flightdetails);
@@ -48,58 +49,75 @@ router.get(
 router.get(
   "/detail/all",
   passport.authenticate("jwt", { session: false }),
-  //  .populate("PostedBy","_id username")
   (req, res) => {
     if (req.user) {
-      flightDetailsModel.find({}, function (err, flightsuser) {
-        if (err) {
-          res.send(err);
-        } else {
-          res.send(flightsuser);
-        }
-      });
+      flightDetailsModel
+        .find({})
+        .populate({ path: "comments", populate: { path: "postedBy" } })
+        .exec((err, result) => {
+          console.log(`result`, result);
+          console.log(`err`, err);
+          if (err) {
+            return res.status(422).json({ error: err });
+          } else {
+            res.json(result);
+          }
+        });
     }
   }
 );
 
-router.put("/like", passport.authenticate("jwt", { session: false }),
-(req, res) => {
-    flightDetailsModel.findByIdAndUpdate(
-    req.body.flightDetailId,
-    {
-      $push: { likes: req.user._id },
-    },
-    {
-      new: true,
-    }
-  ).exec((err,flightDetail) => {
-    if (err) {
-      return res.status(422).json({ error: err });
-    } else {
-    console.log(flightDetail);
-      res.json(flightDetail);
-    }
-  });
-});
-router.put("/unlike",passport.authenticate("jwt", { session: false }),
-(req, res) => {
-    flightDetailsModel.findByIdAndUpdate(
-    req.body.flightDetailId,
-    {
-      $pull: { likes: req.user._id },
-    },
-    {
-      new: true,
-    }
-  ).exec((err, flightDetail) => {
-    if (err) {
-      return res.status(422).json({ error: err });
-    } else {
-   console.log(flightDetail);
-      res.json(flightDetail);
-    }
-  });
-});
+router.put(
+  "/like",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    flightDetailsModel
+      .findByIdAndUpdate(
+        req.body.flightDetailId,
+        {
+          $addToSet: { likes: req.user._id },
+        },
+        {
+          new: true,
+        }
+    ).populate({ path: "comments", populate: { path: "postedBy" } })
+      .exec((err, result) => {
+        console.log(`result`, result);
+        console.log(`err`, err);
+        if (err) {
+          return res.status(422).json({ error: err });
+        } else {
+          res.json(result);
+        }
+      });
+  }
+);
+router.put(
+  "/unlike",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    flightDetailsModel
+      .findByIdAndUpdate(
+        req.body.flightDetailId,
+        {
+          $pull: { likes: req.user._id },
+        },
+        {
+          new: true,
+        }
+      )
+      .populate({ path: "comments", populate: { path: "postedBy" } })
+      .exec((err, result) => {
+        console.log(`result`, result);
+        console.log(`err`, err);
+        if (err) {
+          return res.status(422).json({ error: err });
+        } else {
+          res.json(result);
+        }
+      });
+  }
+);
 
 router.put(
   "/comment",
@@ -119,26 +137,18 @@ router.put(
         {
           new: true,
           useFindAndModify: true,
-        },
-        (err, flightDetail) => {
-          if (err) {
-            console.log(err);
-            return res.json(err);
-          } else {
-            console.log(flightDetail);
-            return res.json(flightDetail);
-          }
         }
       )
-      .populate("comments.postedBy", "_id username");
-    //   .populate("postedBy.postedBy", "_id username");
-    //   .exec((err, result) => {
-    //   if (err) {
-    //     return res.status(422).json({ error: err });
-    //   } else {
-    //     res.json(result);
-    //   }
-    // });
+      .populate({ path: "comments", populate: { path: "postedBy" } })
+      .exec((err, result) => {
+        console.log(`result`, result);
+        console.log(`err`, err);
+        if (err) {
+          return res.status(422).json({ error: err });
+        } else {
+          res.json(result);
+        }
+      });
   }
 );
 

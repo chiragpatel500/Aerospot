@@ -23,11 +23,11 @@ const flightDetailSchema = new mongoose.Schema({
     type: String,
     ref: "flightsusers",
   },
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "flightsusers" }],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
   comments: [
     {
       text: String,
-      postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "flightsusers" },
+      postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
     },
   ],
 });

@@ -35,7 +35,7 @@ function Details() {
   const [flightDetail, setFlightDetail] = useState(null);
   const classes = useStyles();
   const [item, setItem] = useState([]);
-  const [data, setData] = useState([]);
+  const [comment, setComment] = useState("");
 
   // const [likepost, setLikePost] = useState([]);
   //   const [unlikepost, setLikePost] = useState([]);
@@ -61,26 +61,20 @@ function Details() {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-      flightDetailId,
+        flightDetailId,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-          console.log(result)
-        const newData = result.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setData(newData);
+        console.log(result);
+
+        setFlightDetail(result);
       })
       .catch((err) => {
-        console.log("error");
+        console.log(err);
       });
   };
   const unlikePost = (flightDetailId) => {
@@ -88,30 +82,24 @@ function Details() {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-         flightDetailId,
+        flightDetailId,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-          console.log(result)
-        const newData = result.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setData(newData);
+        console.log(result);
+
+        setFlightDetail(result);
       })
       .catch((err) => {
-        console.log("error");
+        console.log(err);
       });
   };
 
-  const makeComment = (text, flightDetailId) => {
+  const makeComment = (flightDetailId) => {
     fetch("http://localhost:5000/flights/comment", {
       method: "put",
       headers: {
@@ -120,26 +108,19 @@ function Details() {
       },
       body: JSON.stringify({
         flightDetailId,
-        text,
+        text: comment,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        const newData = result.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setData(newData);
+
+        setFlightDetail(result);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
 
   return (
     <div>
@@ -174,14 +155,13 @@ function Details() {
           <CardActions
             style={{
               display: "flex",
-              gridRow:"column",
+              gridRow: "column",
               backgroundColor: "skyblue",
               color: "black",
               justifyContent: "center",
               width: "fitcontent",
             }}
           >
-            
             <Button
               size="small"
               color="primary"
@@ -191,7 +171,7 @@ function Details() {
             >
               <ThumbUpIcon />
             </Button>
-   
+
             <Button
               size="small"
               color="primary"
@@ -201,31 +181,39 @@ function Details() {
             >
               <ThumbDownIcon />
             </Button>
-            
-          
+
             <h6>{flightDetail.likes.length} likes</h6>
 
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                makeComment(e.target[0].value, flightDetail._id);
+                makeComment(flightDetail._id);
               }}
             >
               <Button size="small" color="primary" type="submit">
                 <CommentIcon /> Comment
               </Button>
-              <input size="small" type="text" placeholder="add a comment" />
-            
+              <input
+                size="small"
+                type="text"
+                placeholder="add a comment"
+                onChange={(e) => {
+                  console.log(`e.target.value`, e.target.value);
+                  setComment(e.target.value);
+                }}
+              />
             </form>
-            
+
             {flightDetail.comments.map((record) => {
               return (
-                <h6 key={record._id}>
-                  <span style={{ fontWeight: "500" }}>
-                    {record.postedBy.username}
-                  </span>
-                  {record.text}
-                </h6>
+                record.postedBy !== null && (
+                  <h6 key={record._id}>
+                    <span style={{ fontWeight: "500" }}>
+                      {record.postedBy.username}
+                    </span>
+                    {record.text}
+                  </h6>
+                )
               );
             })}
 
