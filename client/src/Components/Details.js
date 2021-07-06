@@ -13,6 +13,7 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import CommentIcon from "@material-ui/icons/Comment";
 import ShareIcon from "@material-ui/icons/Share";
 import Grid from "@material-ui/core/Grid";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {
   BrowserRouter as Router,
   Switch,
@@ -215,6 +216,7 @@ function Details() {
                           {record.postedBy.username}
                         </span>
                         {record.text}
+                        <HighlightOffIcon/>
                       </h6>
                     )
                   );
