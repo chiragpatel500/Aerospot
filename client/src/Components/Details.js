@@ -12,6 +12,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import CommentIcon from "@material-ui/icons/Comment";
 import ShareIcon from "@material-ui/icons/Share";
+import Grid from "@material-ui/core/Grid";
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,18 +28,22 @@ const useStyles = makeStyles({
     maxWidth: "fitcontent",
     backgroundColor: "skyblue",
   },
+  likecomment: {
+    display: "flex",
+    flexdirection: "column",
+    backgroundColor: "skyblue",
+    color: "black",
+  },
 });
 
 function Details() {
   const [state, setState] = useState([]);
-  // const [user, setUser] = useState;
+
   const [flightDetail, setFlightDetail] = useState(null);
   const classes = useStyles();
   const [item, setItem] = useState([]);
   const [comment, setComment] = useState("");
 
-  // const [likepost, setLikePost] = useState([]);
-  //   const [unlikepost, setLikePost] = useState([]);
   let { flightid } = useParams();
 
   useEffect(() => {
@@ -152,16 +157,10 @@ function Details() {
             </CardContent>
           </CardActionArea>
 
-          <CardActions
-            style={{
-              display: "flex",
-              gridRow: "column",
-              backgroundColor: "skyblue",
-              color: "black",
-              justifyContent: "center",
-              width: "fitcontent",
-            }}
+          <CardActions className={classes.likecomment}
           >
+             <Grid container spacing={2}>
+            <Grid item xs={12}>
             <Button
               size="small"
               color="primary"
@@ -171,7 +170,6 @@ function Details() {
             >
               <ThumbUpIcon />
             </Button>
-
             <Button
               size="small"
               color="primary"
@@ -183,8 +181,8 @@ function Details() {
             </Button>
 
             <h6>{flightDetail.likes.length} likes</h6>
-
-            <form
+</Grid>
+            <Grid item xs={12}><form
               onSubmit={(e) => {
                 e.preventDefault();
                 makeComment(flightDetail._id);
@@ -215,11 +213,13 @@ function Details() {
                   </h6>
                 )
               );
-            })}
-
+            })}</Grid>
+           <Grid item xs={12}>
             <Button size="small" color="primary">
               <ShareIcon /> Share
-            </Button>
+                </Button>
+              </Grid>
+            </Grid>
           </CardActions>
         </Card>
       )}

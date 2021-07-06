@@ -11,6 +11,8 @@ import { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
+import Home from "./Home";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -49,11 +51,14 @@ export default function ButtonAppBar() {
                 Logout
               </Button>
             ) : (
-              <Link to="/Login"><Button>LogIn</Button></Link>
+              <Link to="/Login">
+                <Button>LogIn</Button>
+              </Link>
             )}
           </Typography>
+
           <Typography variant="h6" className={classes.title}>
-            <Link to="/">AeroSpot</Link>
+            {isLoggedIn && <Link to="/ListScreen">Aerospot</Link>}
           </Typography>
           {isLoggedIn && <Link to="/MyProfile">MyProfile</Link>}
         </Toolbar>
