@@ -10,8 +10,6 @@ const MyProfile = () => {
   const [mypics, setMyPics] = useState([]);
   const [liked, setLiked] = useState([]);
 
-  
-  
   const likedImages = () => {
     fetch("http://localhost:5000/flights/like", {
       headers: {
@@ -20,17 +18,15 @@ const MyProfile = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setLiked(res.flights);
       });
   };
 
-  
   useEffect(() => {
     likedImages();
     myImages();
   }, []);
-  
+
   //
 
   const myImages = () => {
@@ -41,7 +37,6 @@ const MyProfile = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setMyPics(res.flights);
       });
   };
@@ -66,7 +61,7 @@ const MyProfile = () => {
         console.log(`data`, data);
         alert("Profile picture succesfully updated");
         setUser({ ...user, image: data.image });
-        window.location.reload()
+        window.location.reload();
       })
       .catch((error) => {
         console.log("error");
@@ -114,13 +109,14 @@ const MyProfile = () => {
               onChange={(ev) => changeImage(ev, ev.target.files[0])}
             />
           </h5>
-          {/* <h3>Favorite images:{}</h3>
-          {flights.map((user) => {
-            return <img src={user.image} alt={user.username} />;
-          })}
-          My posted images:{}
-          {flightsusers.map((user) => {
-            return <img src={user.image} alt={user.username} />;
+          Favorite images:
+          {/* {like.map((flights) => {
+            return <img src={flights.image} alt={flights.username} />;
+          })} */}
+          My posted images:
+          {/* {
+            flightsusers.map((flights) => {
+            return <img src={flights.image} alt={flights.username} />;
           })}  */}
         </div>
       )}
