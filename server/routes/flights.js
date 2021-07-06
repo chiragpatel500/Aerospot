@@ -149,4 +149,37 @@ router.put(
   }
 );
 
+router.put(
+  "/deleteComment",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const comment = {
+      text: req.body.text,
+      postedBy: req.user._id,
+    };
+    console.log(`req.body.flightDetailId`, req.body.flightDetailId);
+    flightDetailsModel
+      .findByIdAndUpdate(
+        req.body.flightDetailId,
+        {
+          $pull: { comments: comment },
+        },
+        {
+          new: false,
+          useFindAndModify: true,
+        }
+      )
+      .populate({ path: "comments", populate: { path: "postedBy" } })
+      .exec((err, result) => {
+        console.log(`result`, result);
+        console.log(`err`, err);
+        if (err) {
+          return res.status(422).json({ error: err });
+        } else {
+          res.json(result);
+        }
+      });
+  }
+);
+
 module.exports = router;

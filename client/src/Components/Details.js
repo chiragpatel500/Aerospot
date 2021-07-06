@@ -128,6 +128,29 @@ function Details() {
       });
   };
 
+  const deleteComment = (flightDetailId) => {
+    fetch("http://localhost:5000/flights/deleteComment", {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        flightDetailId,
+        text: comment,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        setFlightDetail(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1> This app is currently under development</h1>
@@ -215,8 +238,10 @@ function Details() {
                         <span style={{ fontWeight: "500" }}>
                           {record.postedBy.username}
                         </span>
-                        {record.text}
-                        <HighlightOffIcon/>
+                        <span style={{ fontWeight: "500" }}>{record.text}</span>
+                        <Button onclick={deleteComment}>
+                          <HighlightOffIcon />
+                        </Button>
                       </h6>
                     )
                   );

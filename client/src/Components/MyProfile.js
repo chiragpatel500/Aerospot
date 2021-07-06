@@ -10,7 +10,7 @@ const MyProfile = () => {
   const [mypics, setMyPics] = useState([]);
   const [liked, setLiked] = useState([]);
 
-  useEffect(() => {
+  const likedImages = (user) => {
     fetch("http://localhost:5000/flights/like", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -21,10 +21,10 @@ const MyProfile = () => {
         console.log(res);
         setLiked(res.flights);
       });
-  }, []);
+  };
   // 
 
-  useEffect(() => {
+  const myImages = (user) => {
     fetch("http://localhost:5000/flightsusers/image", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -35,7 +35,7 @@ const MyProfile = () => {
         console.log(res);
         setMyPics(res.flights);
       });
-  }, []);
+  };
 
   const updateProfilePicture = (newUrl) => {
 
@@ -63,7 +63,7 @@ const MyProfile = () => {
         console.log("error");
       });
   };
-  // remember to: add token, add the url to the body of the request
+  
   const changeImage = (ev, file) => {
     ev.preventDefault();
     const data = new FormData();
@@ -80,7 +80,6 @@ const MyProfile = () => {
       })
       .then((data) => {
         console.log(`data`, data);
-        // setUrl(data.url);
         updateProfilePicture(data.url);
       })
       .catch((err) => {
