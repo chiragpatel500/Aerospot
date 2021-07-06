@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Button from "@material-ui/core/Button";
 
+
 const MyProfile = () => {
   const [users, setUsers] = useState([]);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -93,7 +94,10 @@ const MyProfile = () => {
   console.log(`user`, user);
 
   return (
-    <div>
+        <div style={{ 
+      backgroundImage: `url("https://via.placeholder.com/500")` 
+    }}>
+
       {user && (
         <div>
           <p>Profile Picture:</p>

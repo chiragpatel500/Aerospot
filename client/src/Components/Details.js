@@ -25,14 +25,17 @@ import { FlightsContextProvider } from "../context/flightsContext";
 import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
+  main: {
+    backgroundImage: `url("https://via.placeholder.com/500")` 
+  },
   root: {
     maxWidth: "fitcontent",
-    backgroundColor: "skyblue",
+ 
   },
   likecomment: {
     display: "flex",
     flexdirection: "column",
-    backgroundColor: "skyblue",
+  
     color: "black",
   },
 });
@@ -156,7 +159,7 @@ function Details() {
   };
 
   return (
-    <div>
+    <div className={classes.main}>
       <h1> This app is currently under development</h1>
       <h1>Flight Details</h1>
       {flightDetail !== null && (

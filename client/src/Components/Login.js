@@ -18,13 +18,19 @@ import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-
+  body: {
+ backgroundImage: `url("https://via.placeholder.com/500")` 
+  },
+  main: {
+    backgroundImage: `url("https://via.placeholder.com/500")` ,
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-   backgroundColor:"skyblue",
+   
+  
   },
   avatar: {
     margin: theme.spacing(1),
@@ -73,7 +79,7 @@ export default function Login() {
       });
   };
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

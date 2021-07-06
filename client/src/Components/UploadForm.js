@@ -65,9 +65,11 @@ const UpLoadForm = () => {
         console.log(err);
       });
   };
-
   return (
-    <div className="UpLoadForm">
+    <div
+      className="UpLoadForm"
+      style={{ backgroundImage: `url("https://via.placeholder.com/500")` }}
+    >
       <form style={({ marginTop: "30%" }, { display: "grid" })}>
         <input
           type="file"
