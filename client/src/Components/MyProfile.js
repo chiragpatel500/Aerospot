@@ -114,14 +114,14 @@ const MyProfile = () => {
               onChange={(ev) => changeImage(ev, ev.target.files[0])}
             />
           </h5>
-          <h3>Favorite images:{}</h3>
+          {/* <h3>Favorite images:{}</h3>
           {flights.map((user) => {
             return <img src={user.image} alt={user.username} />;
           })}
           My posted images:{}
           {flightsusers.map((user) => {
             return <img src={user.image} alt={user.username} />;
-          })} 
+          })}  */}
         </div>
       )}
 
