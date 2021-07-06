@@ -18,19 +18,14 @@ import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-  body: {
- backgroundImage: `url("https://via.placeholder.com/500")` 
-  },
   main: {
-    backgroundImage: `url("https://via.placeholder.com/500")` ,
+    backgroundImage: `url("https://images.unsplash.com/photo-1531642765602-5cae8bbbf285?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbmV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)`,
   },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-   
-  
   },
   avatar: {
     margin: theme.spacing(1),

@@ -94,10 +94,11 @@ const MyProfile = () => {
   console.log(`user`, user);
 
   return (
-        <div style={{ 
-      backgroundImage: `url("https://via.placeholder.com/500")` 
-    }}>
-
+    <div
+      style={{
+        backgroundImage: `url("https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fHBsYW5lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
+      }}
+    >
       {user && (
         <div>
           <p>Profile Picture:</p>

@@ -25,17 +25,14 @@ import { FlightsContextProvider } from "../context/flightsContext";
 import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
-  main: {
-    backgroundImage: `url("https://via.placeholder.com/500")` 
-  },
   root: {
     maxWidth: "fitcontent",
- 
+    backgroundImage: `url("https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
   },
   likecomment: {
     display: "flex",
     flexdirection: "column",
-  
+    backgroundImage: `url("https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
     color: "black",
   },
 });
@@ -160,7 +157,6 @@ function Details() {
 
   return (
     <div className={classes.main}>
-      <h1> This app is currently under development</h1>
       <h1>Flight Details</h1>
       {flightDetail !== null && (
         <Card className={classes.root}>

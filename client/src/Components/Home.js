@@ -7,7 +7,7 @@ import { AuthContext } from "../context/authContext";
 
 function Home() {
   return (
-    <div style={{ backgroundColor: "skyblue" },{backgroundImage: `url("https://via.placeholder.com/500")` }}>
+    <div style={{backgroundImage: `url("https://via.placeholder.com/500")` }}>
       <div>
         <h1>Welcome to AeroSpot</h1>
         <h3>Perfect Place for Aero Spotters</h3>
@@ -16,7 +16,6 @@ function Home() {
           fellow Aero Spotters
         </h5>
       </div>
-      <h1> This app is currently under development</h1>
       <div>
         <Link to="/ListScreen">
           <FlightTakeoffIcon />
