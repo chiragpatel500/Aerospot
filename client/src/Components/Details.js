@@ -106,7 +106,8 @@ function Details() {
   };
 
   const makeComment = (flightDetailId) => {
-    fetch("http://localhost:5000/flights/comment", {
+    if (comment != ""){
+     fetch("http://localhost:5000/flights/comment", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -125,25 +126,28 @@ function Details() {
       })
       .catch((err) => {
         console.log(err);
-      });
+      });   
+    } else {
+      alert("put in some text")
+    }
+   
   };
 
-  const deleteComment = (flightDetailId) => {
+  const deleteComment = (commentId) => {
     fetch("http://localhost:5000/flights/deleteComment", {
-      method: "delete",
+      method: "put",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        flightDetailId,
-        text: comment,
+        flightDetailId:flightDetail._id,
+        comment: commentId,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-
         setFlightDetail(result);
       })
       .catch((err) => {
@@ -182,7 +186,7 @@ function Details() {
           </CardActionArea>
 
           <CardActions className={classes.likecomment}>
-            <Grid container spacing={0}>
+            <Grid container spacing={12}>
               <Grid item xs={6}>
                 <Button
                   size="small"
@@ -239,7 +243,7 @@ function Details() {
                           {record.postedBy.username}
                         </span>
                         <span style={{ fontWeight: "500" }}>{record.text}</span>
-                        <Button onclick={deleteComment}>
+                        <Button onClick={()=>deleteComment(record._id)}>
                           <HighlightOffIcon />
                         </Button>
                       </h6>

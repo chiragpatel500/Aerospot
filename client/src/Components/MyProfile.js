@@ -10,7 +10,9 @@ const MyProfile = () => {
   const [mypics, setMyPics] = useState([]);
   const [liked, setLiked] = useState([]);
 
-  const likedImages = (user) => {
+  
+  
+  const likedImages = (liked) => {
     fetch("http://localhost:5000/flights/like", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -22,7 +24,14 @@ const MyProfile = () => {
         setLiked(res.flights);
       });
   };
-  // 
+
+  
+  useEffect(() => {
+    likedImages();
+    myImages();
+  }, []);
+  
+  //
 
   const myImages = (user) => {
     fetch("http://localhost:5000/flightsusers/image", {
@@ -38,7 +47,6 @@ const MyProfile = () => {
   };
 
   const updateProfilePicture = (newUrl) => {
-
     console.log(`newUrl`, newUrl);
     fetch("http://localhost:5000/users/updatePic", {
       method: "Put",
@@ -58,12 +66,13 @@ const MyProfile = () => {
         console.log(`data`, data);
         alert("Profile picture succesfully updated");
         setUser({ ...user, image: data.image });
+        window.location.reload()
       })
       .catch((error) => {
         console.log("error");
       });
   };
-  
+
   const changeImage = (ev, file) => {
     ev.preventDefault();
     const data = new FormData();
@@ -106,16 +115,13 @@ const MyProfile = () => {
             />
           </h5>
           <h3>Favorite images:{}</h3>
-          {liked.map((user) => {
+          {/* {flights.map((user) => {
             return <img src={user.image} alt={user.username} />;
           })}
-
           My posted images:{}
-          {mypics.map((user) => {
-            return (
-              <img src={user.image} alt={user.username} />
-            );
-          })}
+          flightsusers.map((user) => {
+            return <img src={user.image} alt={user.username} />;
+          })} */}
         </div>
       )}
 

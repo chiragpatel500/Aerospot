@@ -153,19 +153,16 @@ router.put(
   "/deleteComment",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const comment = {
-      text: req.body.text,
-      postedBy: req.user._id,
-    };
+    const commentId = req.body.comment;
     console.log(`req.body.flightDetailId`, req.body.flightDetailId);
     flightDetailsModel
       .findByIdAndUpdate(
         req.body.flightDetailId,
         {
-          $pull: { comments: comment },
+          $pull: { comments: { _id:commentId } },
         },
         {
-          new: false,
+          new: true,
           useFindAndModify: true,
         }
       )
