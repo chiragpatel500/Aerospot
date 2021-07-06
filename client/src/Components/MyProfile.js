@@ -12,7 +12,7 @@ const MyProfile = () => {
 
   
   
-  const likedImages = (liked) => {
+  const likedImages = () => {
     fetch("http://localhost:5000/flights/like", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -33,7 +33,7 @@ const MyProfile = () => {
   
   //
 
-  const myImages = (user) => {
+  const myImages = () => {
     fetch("http://localhost:5000/flightsusers/image", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -115,13 +115,13 @@ const MyProfile = () => {
             />
           </h5>
           <h3>Favorite images:{}</h3>
-          {/* {flights.map((user) => {
+          {flights.map((user) => {
             return <img src={user.image} alt={user.username} />;
           })}
           My posted images:{}
-          flightsusers.map((user) => {
+          {flightsusers.map((user) => {
             return <img src={user.image} alt={user.username} />;
-          })} */}
+          })} 
         </div>
       )}
 
