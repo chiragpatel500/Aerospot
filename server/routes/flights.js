@@ -40,9 +40,6 @@ router.get(
           res.send(error);
         });
     }
-    // else {
-    //   res.send("Please login");
-    // }
   }
 );
 

@@ -157,67 +157,68 @@ function Details() {
             </CardContent>
           </CardActionArea>
 
-          <CardActions className={classes.likecomment}
-          >
-             <Grid container spacing={2}>
-            <Grid item xs={12}>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => {
-                likePost(flightDetail._id);
-              }}
-            >
-              <ThumbUpIcon />
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => {
-                unlikePost(flightDetail._id);
-              }}
-            >
-              <ThumbDownIcon />
-            </Button>
-
-            <h6>{flightDetail.likes.length} likes</h6>
-</Grid>
-            <Grid item xs={12}><form
-              onSubmit={(e) => {
-                e.preventDefault();
-                makeComment(flightDetail._id);
-              }}
-            >
-              <Button size="small" color="primary" type="submit">
-                <CommentIcon /> Comment
-              </Button>
-              <input
-                size="small"
-                type="text"
-                placeholder="add a comment"
-                onChange={(e) => {
-                  console.log(`e.target.value`, e.target.value);
-                  setComment(e.target.value);
-                }}
-              />
-            </form>
-
-            {flightDetail.comments.map((record) => {
-              return (
-                record.postedBy !== null && (
-                  <h6 key={record._id}>
-                    <span style={{ fontWeight: "500" }}>
-                      {record.postedBy.username}
-                    </span>
-                    {record.text}
-                  </h6>
-                )
-              );
-            })}</Grid>
-           <Grid item xs={12}>
-            <Button size="small" color="primary">
-              <ShareIcon /> Share
+          <CardActions className={classes.likecomment}>
+            <Grid container spacing={0}>
+              <Grid item xs={6}>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => {
+                    likePost(flightDetail._id);
+                  }}
+                >
+                  <ThumbUpIcon />
                 </Button>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => {
+                    unlikePost(flightDetail._id);
+                  }}
+                >
+                  <ThumbDownIcon />
+                </Button>
+
+                <h6>{flightDetail.likes.length} likes</h6>
+              </Grid>
+              <Grid item xs={6}>
+                <Button size="small" color="primary">
+                  <ShareIcon /> Share
+                </Button>
+              </Grid>
+              <Grid item xs={12}>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    makeComment(flightDetail._id);
+                  }}
+                >
+                  <Button size="small" color="primary" type="submit">
+                    <CommentIcon /> Comment
+                  </Button>
+                  <input
+                    size="small"
+                    type="text"
+                    placeholder="add a comment"
+                    onChange={(e) => {
+                      console.log(`e.target.value`, e.target.value);
+                      setComment(e.target.value);
+                    }}
+                  />
+                </form>
+
+                {flightDetail.comments.map((record) => {
+                  return (
+                    record.postedBy !== null && (
+                      <h6 key={record._id}>
+                        <span style={{ fontWeight: "500" }}>
+                          {record.postedBy.username}
+                        </span>
+                        {record.text}
+                      </h6>
+                    )
+                  );
+                })}
               </Grid>
             </Grid>
           </CardActions>

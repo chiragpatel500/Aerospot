@@ -56,7 +56,6 @@ export default function ButtonAppBar() {
               </Link>
             )}
           </Typography>
-
           <Typography variant="h6" className={classes.title}>
             {isLoggedIn && <Link to="/ListScreen">Aerospot</Link>}
           </Typography>

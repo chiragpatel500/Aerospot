@@ -58,7 +58,6 @@ router.post("/Register", (req, res) => {
 
 router.post("/Login", (req, res) => {
   console.log(`req.body`, req.body);
-  //   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
   userModel.findOne({ username: username }, (err, user) => {
