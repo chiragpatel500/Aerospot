@@ -14,9 +14,13 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
+  main: {
+    backgroundImage: `url("https://i.pinimg.com/originals/ab/cf/55/abcf55f5ebd054491de930ea257a5ce5.png")`,
+    height: "100vh",
+  },
   root: {
     maxWidth: "fitcontent",
-    backgroundColor: "skyblue",
+    backgroundImage: `url("https://i.pinimg.com/originals/ab/cf/55/abcf55f5ebd054491de930ea257a5ce5.png")`,
   },
 });
 
@@ -36,7 +40,7 @@ function ListScreen() {
   }, []);
 
   return (
-    <div>
+    <div className={classes.main}>
       <h1>Flightlist</h1>
       {flights.length != 0 &&
         flights.map((flight) => (
