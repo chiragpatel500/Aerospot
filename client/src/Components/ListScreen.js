@@ -15,16 +15,13 @@ import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
   main: {
-    backgroundImage: `url("https://i.pinimg.com/originals/ab/cf/55/abcf55f5ebd054491de930ea257a5ce5.png")`,
+    backgroundColor:"orange",
     height: "100vh",
+    marginTop: "-5%",
   },
   root: {
     maxWidth: "fitcontent",
     backgroundColor: "skyblue",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "5px",
   },
 });
 
@@ -46,6 +43,13 @@ function ListScreen() {
   return (
     <div className={classes.main}>
       <h1>Flightlist</h1>
+      <div>
+        <Link to="/UpLoadForm">
+          Add
+          <LibraryAddIcon />
+          Images
+        </Link>
+      </div>
       {flights.length != 0 &&
         flights.map((flight) => (
           <Link to={`/Details/${flight._id}`} key={flight._id}>
@@ -72,20 +76,11 @@ function ListScreen() {
                     </CardContent>
                   )}
                 </CardActionArea>
-
-                <CardActions
-                  style={{
-                    backgroundColor: "skyblue",
-                    color: "black",
-                    justifyContent: "center",
-                    width: "fitcontent",
-                  }}
-                ></CardActions>
               </Card>
             </div>
           </Link>
         ))}
-      <div>
+      <div style={{ marginBottom: "30%" }}>
         <Link to="/UpLoadForm">
           Add
           <LibraryAddIcon />

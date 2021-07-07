@@ -11,7 +11,6 @@ const useStyles = makeStyles({
   main: {
     backgroundImage:`url("https://thesourcenews.files.wordpress.com/2014/11/plane-1.jpg")`,
     height: "100vh",
-    marginTop:"5px",
  },
 });
 function Home() {
