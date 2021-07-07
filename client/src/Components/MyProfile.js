@@ -8,6 +8,9 @@ const useStyles = makeStyles({
   main: {
     backgroundImage: `url("https://i.ytimg.com/vi/lmWt0Icl2kM/maxresdefault.jpg")`,
     height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
 });
 const MyProfile = () => {
@@ -19,7 +22,7 @@ const MyProfile = () => {
   const [liked, setLiked] = useState([]);
 
   const likedImages = () => {
-    fetch("http://localhost:5000/flights/like", {
+    fetch("http://localhost:5000/flights/like/user._id", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -38,7 +41,7 @@ const MyProfile = () => {
   //
 
   const myImages = () => {
-    fetch("http://localhost:5000/flightsusers/image", {
+    fetch("http://localhost:5000/flightsusers/user._id/image", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -101,8 +104,7 @@ const MyProfile = () => {
   console.log(`user`, user);
 
   return (
-    <div className={classes.main}
-    >
+    <div className={classes.main} >
       {user && (
         <div>
           <p>Profile Picture:</p>
@@ -119,7 +121,7 @@ const MyProfile = () => {
             />
           </h5>
           Favorite images:
-          {/* {like.map((flights) => {
+          {/* {user_id.map((flights) => {
             return <img src={flights.image} alt={flights.username} />;
           })} */}
           My posted images:
