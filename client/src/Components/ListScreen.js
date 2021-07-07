@@ -15,7 +15,7 @@ import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
   main: {
-    backgroundColor:"orange",
+    backgroundColor:"skyblue",
     height: "100vh",
     marginTop: "-5%",
   },
