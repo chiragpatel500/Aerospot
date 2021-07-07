@@ -3,12 +3,14 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
   },
-    password: {
-        type: String,
-        required:true,
+  password: {
+    type: String,
+    required: true,
   },
   image: {
-      type:String,
-    }
+    type: String,
+  },
+  myPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "filghtdetail" }],
+  myLikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "filghtdetail" }],
 });
 module.exports = mongoose.model("user", userSchema);

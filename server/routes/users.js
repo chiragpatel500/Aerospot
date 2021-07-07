@@ -98,7 +98,14 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     console.log(req.user);
-    res.send(req.user);
+    userModel
+      .findById(req.user._id)
+      .populate({ path: "myPosts" })
+      .populate({ path: "myLikes" })
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => res.send(err));
   }
 );
 

@@ -5,7 +5,7 @@ const flightModel = require("../models/flightModels");
 const flightDetailModel = require("../models/flightDetailsModel");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
-
+const userModel = require("../models/userModel");
 router.post(
   "/flights",
   passport.authenticate("jwt", { session: false }),
@@ -36,11 +36,26 @@ router.post(
           flightroute,
           built,
           flightid: result._id,
+          postedBy: req.user._id,
         });
         newFlightDetail
           .save()
           .then((resultDetail) => {
-            res.send({ success: true, result: result });
+            const flightDetailsId = resultDetail._id;
+            userModel.findByIdAndUpdate(
+              req.user._id,
+              {
+                $push: { myPosts: flightDetailsId },
+              },
+              { new: true },
+              (err, resultUser) => {
+                if (err) {
+                  res.send(err);
+                } else {
+                  res.send({ success: true, result: result });
+                }
+              }
+            );
           })
           .catch((err) => res.send(err));
         // res.json({ post: result });

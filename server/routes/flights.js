@@ -3,6 +3,7 @@ const router = express.Router();
 const flightModel = require("../models/flightModels");
 const flightDetailsModel = require("../models/flightDetailsModel");
 const passport = require("passport");
+const userModel = require("../models/userModel");
 router.get(
   "/all",
   passport.authenticate("jwt", { session: false }),
@@ -68,51 +69,82 @@ router.put(
   "/like",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    flightDetailsModel
-      .findByIdAndUpdate(
-        req.body.flightDetailId,
-        {
-          $addToSet: { likes: req.user._id },
-        },
-        {
-          new: true,
-        }
-    ).populate({ path: "comments", populate: { path: "postedBy" } })
-      .exec((err, result) => {
-        console.log(`result`, result);
-        console.log(`err`, err);
+    userModel.findByIdAndUpdate(
+      req.user._id,
+      {
+        $addToSet: { myLikes: req.body.flightDetailId },
+      },
+      {
+        new: true,
+      },
+      (err, result) => {
         if (err) {
-          return res.status(422).json({ error: err });
+          res.send(err);
         } else {
-          res.json(result);
+          flightDetailsModel
+            .findByIdAndUpdate(
+              req.body.flightDetailId,
+              {
+                $addToSet: { likes: req.user._id },
+              },
+              {
+                new: true,
+              }
+            )
+            .populate({ path: "comments", populate: { path: "postedBy" } })
+            .exec((err, result) => {
+              console.log(`result`, result);
+              console.log(`err`, err);
+              if (err) {
+                return res.status(422).json({ error: err });
+              } else {
+                res.json(result);
+              }
+            });
         }
-      });
+      }
+    );
   }
 );
 router.put(
   "/unlike",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    flightDetailsModel
-      .findByIdAndUpdate(
-        req.body.flightDetailId,
-        {
-          $pull: { likes: req.user._id },
-        },
-        {
-          new: true,
-        }
-      )
-      .populate({ path: "comments", populate: { path: "postedBy" } })
-      .exec((err, result) => {
-        console.log(`result`, result);
-        console.log(`err`, err);
+    userModel.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: { myLikes: req.body.flightDetailId },
+      },
+      {
+        new: true,
+      },
+      (err, result) => {
         if (err) {
-          return res.status(422).json({ error: err });
+          res.send(err);
         } else {
-          res.json(result);
+          flightDetailsModel
+            .findByIdAndUpdate(
+              req.body.flightDetailId,
+              {
+                $pull: { likes: req.user._id },
+              },
+              {
+                new: true,
+              }
+            )
+            .populate({ path: "comments", populate: { path: "postedBy" } })
+            .exec((err, result) => {
+              console.log(`result`, result);
+              console.log(`err`, err);
+              if (err) {
+                return res.status(422).json({ error: err });
+              } else {
+                res.json(result);
+              }
+            });
         }
-      });
+      }
+    );
   }
 );
 
@@ -159,7 +191,7 @@ router.put(
       .findByIdAndUpdate(
         req.body.flightDetailId,
         {
-          $pull: { comments: { _id:commentId } },
+          $pull: { comments: { _id: commentId } },
         },
         {
           new: true,
