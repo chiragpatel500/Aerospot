@@ -20,11 +20,12 @@ function Home() {
     <div className={classes.main}>
       <div>
         <h1>Welcome to AeroSpot</h1>
-        <h3>Perfect Place for Aero Spotters</h3>
-        <h5>
-          View and Post pictures to and from the app and share it with your
-          fellow Aero Spotters
-        </h5>
+        <h2>Perfect Place for Aero Spotters</h2>
+        <h3>
+          View and Post pictures</h3>
+        <h3> share it with your
+          fellow Aero Spotters</h3>
+        
       </div>
       {/* <div>
         <Link to="/ListScreen">

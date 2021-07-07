@@ -28,15 +28,18 @@ const useStyles = makeStyles({
   main: {
     backgroundImage: `url("https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
     height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   root: {
     maxWidth: "fitcontent",
-    backgroundImage: `url("https://i.pinimg.com/originals/ab/cf/55/abcf55f5ebd054491de930ea257a5ce5.png")`,
+    backgroundColor: "skyblue",
   },
   likecomment: {
     display: "flex",
     flexdirection: "column",
-    backgroundImage: `url("https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
+    backgroundColor: "skyblue",
     color: "black",
   },
 });
@@ -223,10 +226,11 @@ function Details() {
                     e.preventDefault();
                     makeComment(flightDetail._id);
                   }}
-                >
+                ><Grid item xs={12}>
                   <Button size="small" color="primary" type="submit">
                     <CommentIcon /> Comment
-                  </Button>
+                    </Button>
+                    </Grid>
                   <input
                     size="small"
                     type="text"

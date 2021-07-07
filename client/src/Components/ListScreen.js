@@ -20,7 +20,11 @@ const useStyles = makeStyles({
   },
   root: {
     maxWidth: "fitcontent",
-    backgroundImage: `url("https://i.pinimg.com/originals/ab/cf/55/abcf55f5ebd054491de930ea257a5ce5.png")`,
+    backgroundColor: "skyblue",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "5px",
   },
 });
 
@@ -81,8 +85,7 @@ function ListScreen() {
             </div>
           </Link>
         ))}
-    
-      <div style={{ marginBottom: "20%" }}>
+      <div>
         <Link to="/UpLoadForm">
           Add
           <LibraryAddIcon />
