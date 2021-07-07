@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   main: {
-    backgroundImage: `url("https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fHBsYW5lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
+    backgroundImage: `url("https://i.ytimg.com/vi/lmWt0Icl2kM/maxresdefault.jpg")`,
     height: "100vh",
   },
 });
