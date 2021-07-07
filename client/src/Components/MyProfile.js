@@ -41,7 +41,7 @@ const MyProfile = () => {
   //
 
   const myImages = () => {
-    fetch("http://localhost:5000/flightsusers/user._id/image", {
+    fetch("http://localhost:5000/flightsusers/_id/image", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
