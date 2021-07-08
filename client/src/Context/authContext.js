@@ -1,6 +1,6 @@
 // 1. import the modules
 import React, { createContext, useState, useEffect } from "react";
-const serverURL = require("./config.js").serverURL;
+const serverURL = require("../config").serverURL;
 
 // 2. initialize the context
 const initAuthContext = {

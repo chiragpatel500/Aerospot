@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-const serverURL = require("./config.js").serverURL;
+const serverURL = require("../config").serverURL;
 
 const useStyles = makeStyles((theme) => ({
   main: {

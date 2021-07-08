@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { makeStyles } from "@material-ui/core/styles";
-const serverURL = require("./config.js").serverURL;
+const serverURL = require("../config").serverURL;
 
 
 const useStyles = makeStyles({
