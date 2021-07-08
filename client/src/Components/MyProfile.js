@@ -25,6 +25,15 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "skyblue",
+    flexFlow: "right",
+  },
+  MyProfile: {
+    maxWidth: "60%",
+    backgroundColor: "skyblue",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "skyblue",
   },
 });
 const MyProfile = () => {
@@ -90,19 +99,31 @@ const MyProfile = () => {
     <div className={classes.main}>
       {user && (
         <div>
-          <p>Profile Picture:</p>
-          <img src={user.image} alt="user profile" />
-          <h2>MyName: {user.username}</h2>
-          <h5>
-            Change profile picture:
-            <input
-              type="file"
-              name="image"
-              placeholder="change profile pic"
-              value={image}
-              onChange={(ev) => changeImage(ev, ev.target.files[0])}
+          <div className={classes.MyProfile}>
+            <p>Profile Picture:</p>
+            <CardMedia
+              component="img"
+              alt="user profile"
+              height="140"
+              image={user.image}
+              title="airplane image"
             />
-          </h5>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                MyName: {user.username}
+              </Typography>
+            </CardContent>
+            <h5>
+              Change profile picture:
+              <input
+                type="file"
+                name="image"
+                placeholder="change profile pic"
+                value={image}
+                onChange={(ev) => changeImage(ev, ev.target.files[0])}
+              />
+            </h5>
+          </div>
           <h1>Favorite images</h1>
           {user.myLikes.map((flight) => {
             return (
@@ -209,5 +230,3 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
-
-
