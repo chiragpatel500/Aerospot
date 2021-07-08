@@ -189,9 +189,6 @@ function Details() {
               <Typography variant="body2" color="textSecondary" component="p">
                 Built:{flightDetail.built}
               </Typography>
-              {/* <Typography variant="body2" color="textSecondary" component="p">
-                postedBy:{flightDetail.postedBy}
-              </Typography> */}
             </CardContent>
           </CardActionArea>
 

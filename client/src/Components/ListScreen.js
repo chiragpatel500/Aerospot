@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     backgroundColor: "skyblue",
     height: "100vh",
     marginTop: "-5%",
-    marginBottom:"20%",
+    // marginBottom:"20%",
   },
   root: {
     display: "flex",
@@ -72,13 +72,6 @@ function ListScreen() {
                       {flight.airline}
                     </Typography>
                   </CardContent>
-                  {flight.postedBy && (
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                      postedby:{flight.postedBy}
-                      </Typography>
-                    </CardContent>
-                  )}
                 </CardActionArea>
               </Card>
             </div>
