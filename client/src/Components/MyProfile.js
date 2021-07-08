@@ -190,13 +190,13 @@ const MyProfile = () => {
                     >
                       Built:{flight.built}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="body2"
                       color="textSecondary"
                       component="p"
                     >
                       postedby:{flight.postedBy}
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                 </CardActionArea>
               </Card>
