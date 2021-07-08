@@ -10,7 +10,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   main: {
     backgroundImage:`url("https://thesourcenews.files.wordpress.com/2014/11/plane-1.jpg")`,
-    height: "100vh",
+    height: "90vh",
+    paddingTop: "10px",
+    // paddingBottom:"10px",
  },
 });
 function Home() {

@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "skyblue",
+    paddingBottom:"5%"
   },
   MyProfile: {
     maxWidth: "50%",
@@ -126,7 +126,7 @@ const MyProfile = () => {
           {user.myLikes.map((flight) => {
             return (
               <Card className={classes.root}>
-                <CardActionArea style={{ margin: "10%" }}>
+                <CardActionArea style={{ marginBottom: "10%" }}>
                   <CardMedia
                     component="img"
                     alt={flight.username}
@@ -171,7 +171,7 @@ const MyProfile = () => {
               </Card>
             );
           })}
-          <h1 className={classes.root}>My posted images</h1>
+          <h1 style={{ margin: "0%"},{backgroundColor:"orange"}}>My posted images</h1>
           {user.myPosts.map((flight) => {
             return (
               <Card className={classes.root}>
@@ -183,7 +183,7 @@ const MyProfile = () => {
                     image={flight.image}
                     title="airplane image"
                   />
-                  <CardContent style={{ margin:"10%" }}>
+                  <CardContent style={{ margin: "10%" }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Airline:{flight.airline}
                     </Typography>

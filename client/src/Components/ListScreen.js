@@ -19,13 +19,13 @@ const useStyles = makeStyles({
     backgroundColor: "skyblue",
     height: "100vh",
     marginTop: "-5%",
-    // marginBottom:"20%",
   },
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "skyblue",
+    paddingBottom:"10px",
   },
 });
 
