@@ -74,7 +74,7 @@ function ListScreen() {
                   {flight.postedBy && (
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {flight.postedBy}
+                      postedby:{flight.postedBy}
                       </Typography>
                     </CardContent>
                   )}

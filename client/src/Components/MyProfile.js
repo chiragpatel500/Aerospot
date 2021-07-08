@@ -210,28 +210,4 @@ const MyProfile = () => {
 
 export default MyProfile;
 
-// <Card className={classes.root}>
-//           <CardActionArea>
-//             <CardMedia
-//               component="img"
-//               alt="lufthansa image"
-//               height="140"
-//               image={flightDetail.image}
-//               title="airplane image"
-//             />
-//             <CardContent>
-//               <Typography gutterBottom variant="h5" component="h2">
-//                 Airline:{flightDetail.airline}
-//               </Typography>
-//               <Typography variant="body2" color="textSecondary" component="p">
-//                 Type:{flightDetail.type}
-//               </Typography>
-//               <Typography variant="body2" color="textSecondary" component="p">
-//                 Route:{flightDetail.flightroute}
-//               </Typography>
-//               <Typography variant="body2" color="textSecondary" component="p">
-//                 Built:{flightDetail.built}
-//               </Typography>
-//             </CardContent>
-//           </CardActionArea>
-//        </Card>
+
