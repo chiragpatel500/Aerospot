@@ -188,6 +188,9 @@ function Details() {
               <Typography variant="body2" color="textSecondary" component="p">
                 Built:{flightDetail.built}
               </Typography>
+              {/* <Typography variant="body2" color="textSecondary" component="p">
+                postedBy:{flightDetail.postedBy}
+              </Typography> */}
             </CardContent>
           </CardActionArea>
 
@@ -226,11 +229,12 @@ function Details() {
                     e.preventDefault();
                     makeComment(flightDetail._id);
                   }}
-                ><Grid item xs={12}>
-                  <Button size="small" color="primary" type="submit">
-                    <CommentIcon /> Comment
+                >
+                  <Grid item xs={12}>
+                    <Button size="small" color="primary" type="submit">
+                      <CommentIcon /> Comment
                     </Button>
-                    </Grid>
+                  </Grid>
                   <input
                     size="small"
                     type="text"
@@ -249,7 +253,7 @@ function Details() {
                           {record.postedBy.username}
                         </span>
                         <span style={{ fontWeight: "500" }}>{record.text}</span>
-                        <Button onClick={()=>deleteComment(record._id)}>
+                        <Button onClick={() => deleteComment(record._id)}>
                           <HighlightOffIcon />
                         </Button>
                       </h6>

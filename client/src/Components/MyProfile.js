@@ -1,8 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   main: {
@@ -12,6 +18,14 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
   },
+  root: {
+    maxWidth: "fitcontent",
+    backgroundColor: "skyblue",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "skyblue",
+  },
 });
 const MyProfile = () => {
   const classes = useStyles();
@@ -20,14 +34,6 @@ const MyProfile = () => {
   const [image, setImage] = useState("");
   // const [mypics, setMyPics] = useState([]);
   // const [liked, setLiked] = useState([]);
-
-
-
-  useEffect(() => {
-    
-  }, []);
-
-  
 
   const updateProfilePicture = (newUrl) => {
     console.log(`newUrl`, newUrl);
@@ -97,13 +103,104 @@ const MyProfile = () => {
               onChange={(ev) => changeImage(ev, ev.target.files[0])}
             />
           </h5>
-          Favorite images:
+          <h1>Favorite images</h1>
           {user.myLikes.map((flight) => {
-            return <img src={flight.image} alt={flight.username} />;
+            return (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt={flight.username}
+                    height="140"
+                    image={flight.image}
+                    title="airplane image"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Airline:{flight.airline}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Type:{flight.type}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Route:{flight.flightroute}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Built:{flight.built}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      postedby:{flight.postedBy}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            );
           })}
-          My posted images:
+
+          <h1>My posted images</h1>
           {user.myPosts.map((flight) => {
-            return <img src={flight.image} alt={flight.username} />;
+            return (
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt={flight.username}
+                    height="140"
+                    image={flight.image}
+                    title="airplane image"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Airline:{flight.airline}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Type:{flight.type}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Route:{flight.flightroute}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Built:{flight.built}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      postedby:{flight.postedBy}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            );
           })}
         </div>
       )}
@@ -112,3 +209,29 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
+
+// <Card className={classes.root}>
+//           <CardActionArea>
+//             <CardMedia
+//               component="img"
+//               alt="lufthansa image"
+//               height="140"
+//               image={flightDetail.image}
+//               title="airplane image"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="h2">
+//                 Airline:{flightDetail.airline}
+//               </Typography>
+//               <Typography variant="body2" color="textSecondary" component="p">
+//                 Type:{flightDetail.type}
+//               </Typography>
+//               <Typography variant="body2" color="textSecondary" component="p">
+//                 Route:{flightDetail.flightroute}
+//               </Typography>
+//               <Typography variant="body2" color="textSecondary" component="p">
+//                 Built:{flightDetail.built}
+//               </Typography>
+//             </CardContent>
+//           </CardActionArea>
+//        </Card>
