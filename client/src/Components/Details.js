@@ -83,8 +83,8 @@ function Details() {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-
         setFlightDetail(result);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -104,8 +104,8 @@ function Details() {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-
         setFlightDetail(result);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -212,6 +212,7 @@ function Details() {
                   onClick={() => {
                     unlikePost(flightDetail._id);
                   }}
+                  
                 >
                   <ThumbDownIcon />
                 </Button>

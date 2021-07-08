@@ -25,15 +25,13 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "skyblue",
-    flexFlow: "right",
+  
   },
   MyProfile: {
-    maxWidth: "60%",
-    backgroundColor: "skyblue",
+    maxWidth: "50%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "skyblue",
   },
 });
 const MyProfile = () => {
@@ -173,8 +171,7 @@ const MyProfile = () => {
               </Card>
             );
           })}
-
-          <h1>My posted images</h1>
+          <h1 className={classes.root}>My posted images</h1>
           {user.myPosts.map((flight) => {
             return (
               <Card className={classes.root}>

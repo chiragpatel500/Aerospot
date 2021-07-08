@@ -10,12 +10,13 @@ router.post(
   "/flights",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { type, airline, flightroute, built, image } = req.body;
+    const { type, airline, flightroute, built, image, postedBy} = req.body;
     console.log(`type`, type);
     console.log(`airline`, airline);
     console.log(`flightroute`, flightroute);
     console.log(`built`, built);
     console.log(`image`, image);
+    console.log(`postedby`, postedBy)
     if (!image || !type || !flightroute || !built || !airline) {
       return res.status(422).json({ error: "Please add all the fields" });
     }
