@@ -101,7 +101,7 @@ router.get(
     userModel
       .findById(req.user._id)
       .populate({ path: "myPosts" })
-      .populate({ path: "myLikes" })
+      .populate({ path: "myLikes", populate: { path: "postedBy" } })
       .then((user) => {
         res.send(user);
       })

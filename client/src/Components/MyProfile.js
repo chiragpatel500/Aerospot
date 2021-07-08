@@ -25,7 +25,6 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "skyblue",
-  
   },
   MyProfile: {
     maxWidth: "50%",
@@ -164,7 +163,7 @@ const MyProfile = () => {
                       color="textSecondary"
                       component="p"
                     >
-                      postedby:{flight.postedBy}
+                      postedby:{flight.postedBy.username}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
