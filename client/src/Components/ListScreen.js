@@ -15,12 +15,15 @@ import { AuthContext } from "../context/authContext";
 
 const useStyles = makeStyles({
   main: {
-    backgroundColor:"skyblue",
+    backgroundColor: "skyblue",
     height: "100vh",
     marginTop: "-5%",
+    marginBottom:"20%",
   },
   root: {
-    maxWidth: "fitcontent",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     backgroundColor: "skyblue",
   },
 });
@@ -80,15 +83,8 @@ function ListScreen() {
             </div>
           </Link>
         ))}
-      <div style={{ marginBottom: "30%" }}>
-        <Link to="/UpLoadForm">
-          Add
-          <LibraryAddIcon />
-          Images
-        </Link>
-      </div>
     </div>
   );
-}
+};
 
 export default ListScreen;

@@ -68,28 +68,28 @@ export default function Register() {
         setIsLoggedIn(true);
       });
   };
-  const PostImage = (ev, file) => {
-    ev.preventDefault();
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "aerospot");
-    data.append("cloud_name", "chiragpatel500");
-    fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
-      method: "post",
-      body: data,
-    })
-      .then((res) => {
-        console.log(`res`, res);
-        return res.json();
-      })
-      .then((data) => {
-        console.log(`data`, data);
-        setUrl(data.url);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const PostImage = (ev, file) => {
+  //   ev.preventDefault();
+  //   const data = new FormData();
+  //   data.append("file", file);
+  //   data.append("upload_preset", "aerospot");
+  //   data.append("cloud_name", "chiragpatel500");
+  //   fetch("	https://api.cloudinary.com/v1_1/chiragpatel500/image/upload", {
+  //     method: "post",
+  //     body: data,
+  //   })
+  //     .then((res) => {
+  //       console.log(`res`, res);
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(`data`, data);
+  //       setUrl(data.url);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   return (
     <div className={classes.main}>
     <Container component="main" maxWidth="xs">
@@ -131,14 +131,14 @@ export default function Register() {
             </Grid>
           </Grid>
           {/* <Link to="/ListScreen"> */}
-          <input
+          {/* <input
             onChange={(ev) => PostImage(ev, ev.target.files[0])}
             type="file"
             name="image"
             label="Profilepic"
             placeholder=""
             value={image}
-          />
+          /> */}
 
           <Button
             onClick={registerFetch}
