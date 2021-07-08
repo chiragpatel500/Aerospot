@@ -16,7 +16,7 @@ import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
-const serverURL = require("../config").serverURL;
+const serverURL = require("../config.js").serverURL;
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -50,7 +50,7 @@ export default function Login() {
 
   const loginFetch = (e) => {
     e.preventDefault();
-    fetch("${serverURL}/users/Login", {
+    fetch(`${serverURL}/users/Login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

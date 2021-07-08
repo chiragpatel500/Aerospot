@@ -23,7 +23,7 @@ import {
 } from "react-router-dom";
 import { FlightsContextProvider } from "../context/flightsContext";
 import { AuthContext } from "../context/authContext";
-const serverURL = require("../config").serverURL;
+const serverURL = require("../config.js").serverURL;
 
 const useStyles = makeStyles({
   main: {
@@ -71,7 +71,7 @@ function Details() {
   }, []);
 
   const likePost = (flightDetailId) => {
-    fetch("http://localhost:5000/flights/like", {
+    fetch(`${serverURL}/flights/like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function Details() {
       });
   };
   const unlikePost = (flightDetailId) => {
-    fetch("http://localhost:5000/flights/unlike", {
+    fetch(`${serverURL}/flights/unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -115,26 +115,26 @@ function Details() {
 
   const makeComment = (flightDetailId) => {
     if (comment != ""){
-     fetch("http://localhost:5000/flights/comment", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        flightDetailId,
-        text: comment,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+     fetch(`${serverURL}/flights/comment`, {
+       method: "put",
+       headers: {
+         "Content-Type": "application/json",
+         Authorization: "Bearer " + localStorage.getItem("token"),
+       },
+       body: JSON.stringify({
+         flightDetailId,
+         text: comment,
+       }),
+     })
+       .then((res) => res.json())
+       .then((result) => {
+         console.log(result);
 
-        setFlightDetail(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });   
+         setFlightDetail(result);
+       })
+       .catch((err) => {
+         console.log(err);
+       });   
     } else {
       alert("put in some text")
     }
@@ -142,14 +142,14 @@ function Details() {
   };
 
   const deleteComment = (commentId) => {
-    fetch("http://localhost:5000/flights/deleteComment", {
+    fetch(`${serverURL}/flights/deleteComment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        flightDetailId:flightDetail._id,
+        flightDetailId: flightDetail._id,
         comment: commentId,
       }),
     })

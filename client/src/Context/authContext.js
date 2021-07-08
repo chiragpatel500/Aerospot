@@ -1,6 +1,6 @@
 // 1. import the modules
 import React, { createContext, useState, useEffect } from "react";
-const serverURL = require("../config").serverURL;
+const serverURL = require("../config.js").serverURL;
 
 // 2. initialize the context
 const initAuthContext = {
@@ -19,7 +19,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      fetch("${serverURL}/users/MyProfile", {
+      fetch(`${serverURL}/users/MyProfile`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("token"),
