@@ -67,7 +67,7 @@ function ListScreen() {
                     image={flight.image}
                     title="airplane image"
                   />
-                  <CardContent>
+                  <CardContent style={{ marginBottom: "10%" }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {flight.airline}
                     </Typography>

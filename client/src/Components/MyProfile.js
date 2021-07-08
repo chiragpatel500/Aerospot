@@ -126,7 +126,7 @@ const MyProfile = () => {
           {user.myLikes.map((flight) => {
             return (
               <Card className={classes.root}>
-                <CardActionArea>
+                <CardActionArea style={{ margin: "10%" }}>
                   <CardMedia
                     component="img"
                     alt={flight.username}
@@ -183,7 +183,7 @@ const MyProfile = () => {
                     image={flight.image}
                     title="airplane image"
                   />
-                  <CardContent>
+                  <CardContent style={{ margin:"10%" }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Airline:{flight.airline}
                     </Typography>
