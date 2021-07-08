@@ -1,5 +1,6 @@
 // 1.import the modules
-import React, { createContext, useState} from 'react';
+import React, { createContext, useState } from 'react';
+
 
 
 //2.inititalize the context

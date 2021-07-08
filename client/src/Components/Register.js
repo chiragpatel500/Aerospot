@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+const serverURL = require("./config.js").serverURL;
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -48,7 +49,7 @@ export default function Register() {
   const [url, setUrl] = useState("");
   const registerFetch = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/users/Register", {
+    fetch("${serverURL}/users/Register", {
       method: "POST",
       headers: {
         "content-type": "application/json",

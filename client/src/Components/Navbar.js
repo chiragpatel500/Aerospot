@@ -13,6 +13,7 @@ import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 import Home from "./Home";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

@@ -16,6 +16,7 @@ import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
+const serverURL = require("./config.js").serverURL;
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -49,7 +50,7 @@ export default function Login() {
 
   const loginFetch = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/users/Login", {
+    fetch("${serverURL}/users/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +70,7 @@ export default function Login() {
         history.push("/ListScreen");
       })
       .catch((err) => {
-        alert("user not found please register")
+        alert("user not found please register");
         console.log("login id not found please register");
       });
   };

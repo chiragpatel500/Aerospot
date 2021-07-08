@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+const serverURL = require("./config.js").serverURL;
 
 const useStyles = makeStyles({
   main: {
@@ -43,7 +44,7 @@ const MyProfile = () => {
 
   const updateProfilePicture = (newUrl) => {
     console.log(`newUrl`, newUrl);
-    fetch("http://localhost:5000/users/updatePic", {
+    fetch("${serverURL}/users/updatePic", {
       method: "Put",
       headers: {
         "Content-Type": "application/json",
