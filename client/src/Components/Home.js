@@ -12,7 +12,6 @@ const useStyles = makeStyles({
     backgroundImage:`url("https://thesourcenews.files.wordpress.com/2014/11/plane-1.jpg")`,
     height: "90vh",
     paddingTop: "10px",
-    // paddingBottom:"10px",
  },
 });
 function Home() {
