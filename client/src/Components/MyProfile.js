@@ -44,7 +44,7 @@ const MyProfile = () => {
 
   const updateProfilePicture = (newUrl) => {
     console.log(`newUrl`, newUrl);
-    fetch("${serverURL}/users/updatePic", {
+    fetch(`${serverURL}/users/updatePic`, {
       method: "Put",
       headers: {
         "Content-Type": "application/json",
