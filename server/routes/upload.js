@@ -6,6 +6,7 @@ const flightDetailModel = require("../models/flightDetailsModel");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const userModel = require("../models/userModel");
+
 router.post(
   "/flights",
   passport.authenticate("jwt", { session: false }),
