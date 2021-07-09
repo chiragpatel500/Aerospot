@@ -12,7 +12,13 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 const serverURL = require("../config.js").serverURL;
 
@@ -47,6 +53,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const history = useHistory();
   const registerFetch = (e) => {
     e.preventDefault();
     fetch(`${serverURL}/users/Register`, {
@@ -66,6 +73,7 @@ export default function Register() {
         localStorage.setItem("token", data.token);
         setUser(data.user);
         setIsLoggedIn(true);
+        history.push("/ListScreen");
       });
   };
   // const PostImage = (ev, file) => {
