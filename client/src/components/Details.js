@@ -46,6 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
+// Details compnent Which fetches all the Details based on particular id. 
 function Details() {
   const [state, setState] = useState([]);
   const [flightDetail, setFlightDetail] = useState(null);
