@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { withWidth } from "@material-ui/core";
 const serverURL = require("../config.js").serverURL;
 
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   main: {
     backgroundColor: "skyblue",

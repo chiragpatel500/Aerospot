@@ -7,7 +7,7 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import history from "../history";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-// Css
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   root: {
     backgroundColor: "orange",

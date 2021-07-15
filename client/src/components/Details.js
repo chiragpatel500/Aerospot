@@ -25,6 +25,7 @@ import { FlightsContextProvider } from "../context/flightsContext";
 import { AuthContext } from "../context/authContext";
 const serverURL = require("../config.js").serverURL;
 
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   main: {
     backgroundImage: `url("https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")`,
@@ -47,7 +48,6 @@ const useStyles = makeStyles({
 
 function Details() {
   const [state, setState] = useState([]);
-
   const [flightDetail, setFlightDetail] = useState(null);
   const classes = useStyles();
   const [item, setItem] = useState([]);

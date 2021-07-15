@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 const serverURL = require("../config.js").serverURL;
 
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   main: {
     backgroundImage: `url("https://i.ytimg.com/vi/lmWt0Icl2kM/maxresdefault.jpg")`,

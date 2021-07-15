@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import { AuthContext } from "../context/authContext";
 import { makeStyles } from "@material-ui/core/styles";
 
-
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   main: {
     backgroundImage:`url("https://thesourcenews.files.wordpress.com/2014/11/plane-1.jpg")`,

@@ -13,7 +13,7 @@ import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 import Home from "./Home";
 
-
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

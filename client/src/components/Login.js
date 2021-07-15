@@ -18,6 +18,7 @@ import { AuthContext } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 const serverURL = require("../config.js").serverURL;
 
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundImage: `url("https://airbus-h.assetsadobe2.com/is/image/content/dam/products-and-solutions/commercial-aircraft/a350-family/a350-900/A350_XWB_Demo_Tour_of_Asia_01.jpg?wid=1920&fit=fit,1&qlt=85,0")`,

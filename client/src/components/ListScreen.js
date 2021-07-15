@@ -14,6 +14,7 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import { AuthContext } from "../context/authContext";
 const serverURL = require("../config.js").serverURL;
 
+// Styling the Component and the background CSS styles method.  
 const useStyles = makeStyles({
   main: {
     backgroundColor: "skyblue",
