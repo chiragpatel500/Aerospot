@@ -4,6 +4,7 @@ const flightModel = require("../models/flightModels");
 const flightDetailsModel = require("../models/flightDetailsModel");
 const passport = require("passport");
 const userModel = require("../models/userModel");
+
 router.get(
   "/all",
   passport.authenticate("jwt", { session: false }),
